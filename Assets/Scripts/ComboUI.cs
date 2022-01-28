@@ -29,14 +29,16 @@ public class ComboUI : MonoBehaviour
         source.PlayOneShot(ComboUpgradeSound);
     }
 
-    public void upgrade(float multiplier){
+    public void upgrade(float multiplier, bool playAnim = true){
         
 
         if(multiplier <= 1){
             image.sprite = Tiers[0];
-            anim.Play("Base Layer.ComboReset", -1);
+            if(playAnim)
+                anim.Play("Base Layer.ComboReset", -1);
         }else{
-            anim.Play("Base Layer.ComboUpgrade", -1);
+            if(playAnim)
+                anim.Play("Base Layer.ComboUpgrade", -1);
 
             if(multiplier >= 5){
                 image.sprite = Tiers[3];

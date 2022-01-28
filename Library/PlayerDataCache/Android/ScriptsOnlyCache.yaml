@@ -110,10 +110,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -194,43 +192,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1744}
     - Class: 114
-      Script: {instanceID: 1752}
+      Script: {instanceID: 1750}
     - Class: 114
-      Script: {instanceID: 1834}
+      Script: {instanceID: 1832}
     - Class: 114
-      Script: {instanceID: 1910}
+      Script: {instanceID: 1908}
     - Class: 114
-      Script: {instanceID: 1920}
+      Script: {instanceID: 1918}
     - Class: 114
-      Script: {instanceID: 2084}
+      Script: {instanceID: 2082}
     - Class: 114
-      Script: {instanceID: 2442}
+      Script: {instanceID: 2440}
     - Class: 114
-      Script: {instanceID: 2634}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 2698}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 2748}
+      Script: {instanceID: 2746}
     - Class: 114
-      Script: {instanceID: 2802}
+      Script: {instanceID: 2800}
     - Class: 114
-      Script: {instanceID: 3010}
+      Script: {instanceID: 3008}
     - Class: 114
-      Script: {instanceID: 3026}
+      Script: {instanceID: 3024}
     - Class: 114
-      Script: {instanceID: 3562}
+      Script: {instanceID: 3560}
     - Class: 114
-      Script: {instanceID: 3658}
+      Script: {instanceID: 3656}
     - Class: 114
-      Script: {instanceID: 3730}
+      Script: {instanceID: 3728}
     - Class: 114
-      Script: {instanceID: 3754}
+      Script: {instanceID: 3752}
     - Class: 114
-      Script: {instanceID: 3826}
+      Script: {instanceID: 3824}
     - Class: 114
-      Script: {instanceID: 3972}
+      Script: {instanceID: 3970}
     - Class: 114
-      Script: {instanceID: 4120}
+      Script: {instanceID: 4118}
+    - Class: 114
+      Script: {instanceID: 4176}
     - Class: 114
       Script: {instanceID: 4242}
     - Class: 114
@@ -325,8 +325,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9084}
     - Class: 114
       Script: {instanceID: 9094}
-    - Class: 114
-      Script: {instanceID: 25286}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -880,13 +878,19 @@ ScriptsOnlyBuild:
     className: RuntimeDebuggerOpenXRFeature
   - hash:
       serializedVersion: 2
+      Hash: 551f87f8cbe500c8448fa9606f5f2f15
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ComboUI
+  - hash:
+      serializedVersion: 2
       Hash: 6f29b049d6b6b18bee23aaf2fe273e02
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
     className: ColorAdjustments
   - hash:
       serializedVersion: 2
-      Hash: b222c0c30699d87e88dd99e326f33450
+      Hash: 725dad2250ad0646532b478d1e92d715
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WallGenerator
@@ -1976,13 +1980,7 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: Benchmark01
-  - hash:
-      serializedVersion: 2
-      Hash: 551f87f8cbe500c8448fa9606f5f2f15
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ComboUI
   platform: 13
   scenePathNames:
   - Assets/Scenes/VR Rhythm Test.unity
-  playerPath: C:/Users/Arnaud/My project (1)/build06.apk
+  playerPath: C:/Users/Arnaud/My project (1)/build07.apk

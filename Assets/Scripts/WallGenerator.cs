@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR;
 
 public class WallGenerator : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class WallGenerator : MonoBehaviour
     public ScoreOutput scoreOutput;
     private int combo = 0;
     private float comboMultiplier = 0;
-    private float nextActionTime = 0.0f;
+    private float nextActionTime = 1.0f;
     public float period = 1f;
     private AudioSource source;
     private int Score = 0;
@@ -25,28 +26,26 @@ public class WallGenerator : MonoBehaviour
     public ComboUI comboUI;
     public bool followCurve = true;
     public AnimationCurve speedMultiplier;
+    public InputHelpers.Button pauseButton;
+    private bool wasPausedButtonPressedLastUpdate = false;
+    public GameObject PauseMenu;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        PauseMenu.SetActive(false);
+
         source = GetComponent<AudioSource>();
-        WallDance.generator = this;
-        Obstacle.generator = this;
+        ObstacleInterface.generator = this;
         source.PlayOneShot(Music);
         
-        WallDance.VRRight = VRRight;
-        WallDance.VRLeft = VRLeft;
-        WallDance.VRHead = VRHead;
-        WallDance.speed = speed;
-        WallDance.speedMultiplier = speedMultiplier;
-        WallDance.followCurve = followCurve;
-
-        Obstacle.speed = speed;
-        Obstacle.VRRight = VRRight;
-        Obstacle.VRLeft = VRLeft;
-        Obstacle.VRHead = VRHead;
-        Obstacle.speedMultiplier = speedMultiplier;
-        Obstacle.followCurve = followCurve;
+        ObstacleInterface.VRRight = VRRight;
+        ObstacleInterface.VRLeft = VRLeft;
+        ObstacleInterface.VRHead = VRHead;
+        ObstacleInterface.speed = speed;
+        ObstacleInterface.speedMultiplier = speedMultiplier;
+        ObstacleInterface.followCurve = followCurve;
     }
 
     
@@ -55,6 +54,15 @@ public class WallGenerator : MonoBehaviour
         if (Time.time >= nextActionTime ) {
            nextActionTime = Time.time + period;
            GameObject obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], transform.position, transform.rotation);
+        }
+
+        checkForPause();
+    }
+
+    void FixedUpdate(){
+        if(Obstacle.isPaused){
+            Obstacle.totalTimePaused += Time.fixedDeltaTime;
+            nextActionTime += Time.fixedDeltaTime;
         }
     }
 
@@ -73,42 +81,71 @@ public class WallGenerator : MonoBehaviour
         scoreOutput.ShowScore(scoreIncrease);
     }
 
-    int DistanceToScore(float dis){
-        return (dis <= 8.0f? 1000 : (dis > 35.0f? 0 : Mathf.FloorToInt(vertexPointToQuad(8.0f, 500, 35.0f, 50, dis)))); 
+    static int DistanceToScore(float dis){
+        return (dis <= 8.0f? 1000 : (dis > 35.0f? 0 : Mathf.FloorToInt(vertexPointToQuad(35.0f, 50, 8.0f, 500, dis)))); 
     }
 
-    float vertexPointToQuad(float vx, float vy, float x, float y, float t){
+    static float vertexPointToQuad(float vx, float vy, float x, float y, float t){
         return (y-vy)/Mathf.Pow(x-vx, 2) * Mathf.Pow(t-vx, 2) + vy;
     }
 
-    void addCombo(int s){
+    void addCombo(int s, bool playAnim = true){
         if(s <= 0){
             combo = 0;
             comboMultiplier = 1;
-            comboUI.upgrade(comboMultiplier);
+            comboUI.upgrade(comboMultiplier, playAnim);
         }else{
             combo += 1;
             if(comboMultiplier < 5f && Mathf.Floor(combo/4) + 1 != comboMultiplier){
                 comboMultiplier = Mathf.Floor(combo/4) + 1;
-                comboUI.upgrade(comboMultiplier);
+                comboUI.upgrade(comboMultiplier, playAnim);
             }
         }
     }
 
 
     public void restart(){
-        foreach(WallDance w in FindObjectsOfType<WallDance>()){
+        foreach(ObstacleInterface w in FindObjectsOfType<ObstacleInterface>()){
             Destroy(w.gameObject);
-        }
-        foreach(Obstacle o in FindObjectsOfType<Obstacle>()){
-            Destroy(o.gameObject);
         }
         nextActionTime = Time.time;
         source.Stop();
         source.PlayOneShot(Music);
         Score = 0;
         scoreTotal.text = "SCORE:\n" + Score;
-        
+        addCombo(0, false);
+        comboUI.updateCombo(combo);
+        ResumeGame();
+    }
+
+    void checkForPause(){
+        //InputDevices.GetDeviceAtXRNode(RightController.controllerNode).TryGetFeatureValue(CommonUsages.menuButton, out bool isMenuPressedRight);
+        InputHelpers.IsPressed(LeftController.inputDevice, pauseButton, out bool isMenuPressedLeft, .1f);
+        InputHelpers.IsPressed(LeftController.inputDevice, pauseButton, out bool isMenuPressedRight, .1f);
+
+        if(!wasPausedButtonPressedLastUpdate && (isMenuPressedLeft || isMenuPressedRight)){
+            wasPausedButtonPressedLastUpdate = true;
+            if(!ObstacleInterface.isPaused)
+                PauseGame();
+            else
+                ResumeGame();
+        }
+
+        wasPausedButtonPressedLastUpdate =  (isMenuPressedLeft || isMenuPressedRight);
+    }
+
+    public void PauseGame(){
+        //Time.timeScale = 0.0f;
+        Obstacle.isPaused = true;
+        source.Pause();
+        PauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame(){
+        //Time.timeScale = 1.0f;
+        Obstacle.isPaused = false;
+        source.UnPause();
+        PauseMenu.SetActive(false);
     }
 
     void scoreFeedback(float rightDis, float leftDis){
