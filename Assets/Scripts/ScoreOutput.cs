@@ -37,9 +37,6 @@ public class ScoreOutput : MonoBehaviour
     }
 
     public void ShowScore(int score){
-        //text.text = "+" + score;
-        //isShowing = true;
-        //timeStartedToFade = Time.time;
         if(score >= 1000){
             image.sprite = Tiers[0];
             source.PlayOneShot(TiersSounds[0]);

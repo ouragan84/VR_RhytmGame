@@ -14,15 +14,20 @@ public class WallDance : MonoBehaviour
     public static Transform VRRight;
     private bool HasPassed = false;
     public static WallGenerator generator;
+    public static bool followCurve;
+    public static AnimationCurve speedMultiplier;
+    private float timeCreated;
 
     void Start(){
         transform.localScale = generator.transform.localScale;
+        timeCreated = Time.time;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Translate(speed*Time.fixedDeltaTime);
+        float mult = followCurve?speedMultiplier.Evaluate(Time.time-timeCreated):1;
+        transform.Translate(speed*mult*Time.fixedDeltaTime);
     }
 
     void Update()

@@ -23,6 +23,8 @@ public class WallGenerator : MonoBehaviour
     public XRController RightController;
     public XRController LeftController;
     public ComboUI comboUI;
+    public bool followCurve = true;
+    public AnimationCurve speedMultiplier;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +33,20 @@ public class WallGenerator : MonoBehaviour
         WallDance.generator = this;
         Obstacle.generator = this;
         source.PlayOneShot(Music);
+        
         WallDance.VRRight = VRRight;
         WallDance.VRLeft = VRLeft;
         WallDance.VRHead = VRHead;
         WallDance.speed = speed;
+        WallDance.speedMultiplier = speedMultiplier;
+        WallDance.followCurve = followCurve;
+
         Obstacle.speed = speed;
         Obstacle.VRRight = VRRight;
         Obstacle.VRLeft = VRLeft;
         Obstacle.VRHead = VRHead;
+        Obstacle.speedMultiplier = speedMultiplier;
+        Obstacle.followCurve = followCurve;
     }
 
     
