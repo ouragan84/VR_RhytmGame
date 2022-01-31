@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR;
+using Unity.XR.CoreUtils;
 
 public class WallGenerator : MonoBehaviour
 {
@@ -15,20 +16,26 @@ public class WallGenerator : MonoBehaviour
     public AudioClip Music;
     public TextMeshProUGUI scoreTotal;
     public ScoreOutput scoreOutput;
-    private int combo = 0;
-    private float comboMultiplier = 0;
-    private float nextActionTime = 1.0f;
-    public float period = 1f;
-    private AudioSource source;
-    private int Score = 0;
     public XRController RightController;
     public XRController LeftController;
     public ComboUI comboUI;
     public bool followCurve = true;
     public AnimationCurve speedMultiplier;
     public InputHelpers.Button pauseButton;
-    private bool wasPausedButtonPressedLastUpdate = false;
     public GameObject PauseMenu;
+    public float additionalHeight = 0.10f;
+    public float initialHeightOfPanels = 1.80f;
+    public InputHelpers.Button resetHeightButton;
+
+    private bool wasPausedButtonPressedLastUpdate = false;
+    private int combo = 0;
+    private float comboMultiplier = 0;
+    private float nextActionTime = 1.0f;
+    public float period = 1f;
+    private AudioSource source;
+    private int Score = 0;
+    private Vector3 initialScale;
+    private Vector3 initialPosition;
     
 
     // Start is called before the first frame update
@@ -46,17 +53,18 @@ public class WallGenerator : MonoBehaviour
         ObstacleInterface.speed = speed;
         ObstacleInterface.speedMultiplier = speedMultiplier;
         ObstacleInterface.followCurve = followCurve;
-    }
 
-    
+        initialScale = transform.localScale;
+        initialPosition = transform.position;
+    }
     
     void Update () {
         if (Time.time >= nextActionTime ) {
            nextActionTime = Time.time + period;
-           GameObject obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], transform.position, transform.rotation);
+           GameObject obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], initialPosition, transform.rotation);
         }
 
-        checkForPause();
+        checkForInputs();
     }
 
     void FixedUpdate(){
@@ -118,10 +126,10 @@ public class WallGenerator : MonoBehaviour
         ResumeGame();
     }
 
-    void checkForPause(){
+    void checkForInputs(){
         //InputDevices.GetDeviceAtXRNode(RightController.controllerNode).TryGetFeatureValue(CommonUsages.menuButton, out bool isMenuPressedRight);
         InputHelpers.IsPressed(LeftController.inputDevice, pauseButton, out bool isMenuPressedLeft, .1f);
-        InputHelpers.IsPressed(LeftController.inputDevice, pauseButton, out bool isMenuPressedRight, .1f);
+        InputHelpers.IsPressed(RightController.inputDevice, pauseButton, out bool isMenuPressedRight, .1f);
 
         if(!wasPausedButtonPressedLastUpdate && (isMenuPressedLeft || isMenuPressedRight)){
             wasPausedButtonPressedLastUpdate = true;
@@ -131,7 +139,15 @@ public class WallGenerator : MonoBehaviour
                 ResumeGame();
         }
 
-        wasPausedButtonPressedLastUpdate =  (isMenuPressedLeft || isMenuPressedRight);
+        InputHelpers.IsPressed(LeftController.inputDevice, resetHeightButton, out bool isResetPressedLeft, .1f);
+        InputHelpers.IsPressed(RightController.inputDevice, resetHeightButton, out bool isResetPressedRight, .1f);
+
+        if(!wasPausedButtonPressedLastUpdate && (isResetPressedLeft && isResetPressedRight)){
+            wasPausedButtonPressedLastUpdate = true;
+            ResetHeight();
+        }
+
+        wasPausedButtonPressedLastUpdate =  (isMenuPressedLeft || isMenuPressedRight) || (isResetPressedLeft && isResetPressedRight);
     }
 
     public void PauseGame(){
@@ -176,5 +192,19 @@ public class WallGenerator : MonoBehaviour
         addCombo(0);
         comboUI.updateCombo(combo);
         scoreOutput.ShowHit();
+    }
+
+    public void ResetHeight(){
+        float playerHeight = FindObjectOfType<XROrigin>().CameraInOriginSpaceHeight + additionalHeight;
+        if(playerHeight > 2.5f) playerHeight = 2.5f;
+        if(playerHeight < 1.0f) playerHeight = 1.2f;
+        
+        Debug.Log(playerHeight);
+        transform.localScale = initialScale * (playerHeight / initialHeightOfPanels);
+        transform.position = new Vector3(initialPosition.x, initialPosition.y*(transform.localScale.y/initialScale.y), initialPosition.z);
+    }
+
+    public void QuitLevel(){
+        Application.Quit();
     }
 }
