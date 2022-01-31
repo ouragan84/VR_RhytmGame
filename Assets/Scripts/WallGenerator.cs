@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR;
 using Unity.XR.CoreUtils;
+using System.IO;
 
 public class WallGenerator : MonoBehaviour
 {
@@ -13,7 +15,6 @@ public class WallGenerator : MonoBehaviour
     public Transform VRHead;
     public Transform VRLeft;
     public Transform VRRight;
-    public AudioClip Music;
     public TextMeshProUGUI scoreTotal;
     public ScoreOutput scoreOutput;
     public XRController RightController;
@@ -24,28 +25,37 @@ public class WallGenerator : MonoBehaviour
     public InputHelpers.Button pauseButton;
     public GameObject PauseMenu;
     public float additionalHeight = 0.10f;
-    public float initialHeightOfPanels = 1.80f;
+    public float initialHeightOfPanels = 1.75f;
     public InputHelpers.Button resetHeightButton;
+    public TextAsset levelFile;
+    public bool isRandom = false;
 
     private bool wasPausedButtonPressedLastUpdate = false;
     private int combo = 0;
     private float comboMultiplier = 0;
-    private float nextActionTime = 1.0f;
-    public float period = 1f;
+    private float songTimeElapsed = -1.0f;
     private AudioSource source;
     private int Score = 0;
     private Vector3 initialScale;
     private Vector3 initialPosition;
+    private short currentLevel;
+    private Levels levels;
+    private AudioClip currentSong;
+    private LevelStructure levelStructure;
+    private int lastIndexBuilt = -1;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        loadLevels();
+        loadAssetsFromLevel(0, "easy");
+
         PauseMenu.SetActive(false);
 
         source = GetComponent<AudioSource>();
         ObstacleInterface.generator = this;
-        source.PlayOneShot(Music);
+        source.PlayOneShot(currentSong);
         
         ObstacleInterface.VRRight = VRRight;
         ObstacleInterface.VRLeft = VRLeft;
@@ -56,21 +66,51 @@ public class WallGenerator : MonoBehaviour
 
         initialScale = transform.localScale;
         initialPosition = transform.position;
+
+        //readFileLevel(levelFilePaths[currentLevel]);
     }
     
     void Update () {
-        if (Time.time >= nextActionTime ) {
-           nextActionTime = Time.time + period;
-           GameObject obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], initialPosition, transform.rotation);
+
+        if(Obstacle.isPaused){
+            Obstacle.totalTimePaused += Time.deltaTime;
+        }else{
+            songTimeElapsed += Time.deltaTime;
+        }
+
+        if (Mathf.FloorToInt(songTimeElapsed / levelStructure.interval) > lastIndexBuilt ) {
+            lastIndexBuilt = Mathf.FloorToInt(songTimeElapsed / levelStructure.interval);
+
+            GameObject obj;
+            if(isRandom)
+                obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], initialPosition, transform.rotation);
+            else{
+                int id = levelStructure.data[lastIndexBuilt] - 1;
+                if(id >= 0)
+                    obj = Instantiate(Walls[id], initialPosition, transform.rotation);
+            }
+                
         }
 
         checkForInputs();
     }
 
-    void FixedUpdate(){
-        if(Obstacle.isPaused){
-            Obstacle.totalTimePaused += Time.fixedDeltaTime;
-            nextActionTime += Time.fixedDeltaTime;
+    public void loadLevels(){
+        levels = JsonUtility.FromJson<Levels>(levelFile.text);
+    }
+
+    public void loadAssetsFromLevel(short lvl, string difficulty){
+        currentLevel = lvl;
+        currentSong = Resources.Load<AudioClip>(levels.levels[currentLevel].song_path);
+        Debug.Log(levels.levels[currentLevel].song_path);
+
+        foreach (LevelStructure x in levels.levels[currentLevel].level_structure)
+        {
+            if (x.difficulty.Equals(difficulty))
+            {
+                levelStructure = x;
+                break;
+            }
         }
     }
 
@@ -111,14 +151,14 @@ public class WallGenerator : MonoBehaviour
         }
     }
 
-
     public void restart(){
         foreach(ObstacleInterface w in FindObjectsOfType<ObstacleInterface>()){
             Destroy(w.gameObject);
         }
-        nextActionTime = Time.time;
+        songTimeElapsed = -1.0f;
+        lastIndexBuilt = -1;
         source.Stop();
-        source.PlayOneShot(Music);
+        source.PlayOneShot(currentSong);
         Score = 0;
         scoreTotal.text = "SCORE:\n" + Score;
         addCombo(0, false);
@@ -199,7 +239,6 @@ public class WallGenerator : MonoBehaviour
         if(playerHeight > 2.5f) playerHeight = 2.5f;
         if(playerHeight < 1.0f) playerHeight = 1.2f;
         
-        Debug.Log(playerHeight);
         transform.localScale = initialScale * (playerHeight / initialHeightOfPanels);
         transform.position = new Vector3(initialPosition.x, initialPosition.y*(transform.localScale.y/initialScale.y), initialPosition.z);
     }

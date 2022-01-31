@@ -3816,7 +3816,6 @@ MonoBehaviour:
   VRHead: {fileID: 2074478224}
   VRLeft: {fileID: 2065434959}
   VRRight: {fileID: 1944797525}
-  Music: {fileID: 8300000, guid: 281f4ba993364f44ea9aefb399899f23, type: 3}
   scoreTotal: {fileID: 2126288489}
   scoreOutput: {fileID: 1020881431}
   RightController: {fileID: 1944797528}
@@ -3852,6 +3851,7 @@ MonoBehaviour:
   additionalHeight: 0.05
   initialHeightOfPanels: 1.8
   resetHeightButton: 11
+  levelFile: {fileID: 4900000, guid: 336a23a545c34324485ffca87bfd451a, type: 3}
   period: 3
 --- !u!212 &1744648415
 SpriteRenderer:

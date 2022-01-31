@@ -10,7 +10,7 @@ public class WallDance : ObstacleInterface
     new protected void Start(){
         base.Start();
         transform.localScale = generator.transform.localScale;
-        transform.localScale = generator.transform.position;
+        transform.position = generator.transform.position;
     }
 
     void Update()
