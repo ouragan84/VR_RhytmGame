@@ -102,8 +102,12 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.OpenXR.Features.Interactions.ValveIndexControllerProfile
     - UnityEngine.XR.OpenXR.OpenXRLoader
     - UnityEngine.XR.OpenXR.OpenXRSettings
+    Unity.XR.WindowsMixedReality.Editor.dll:
+    - UnityEditor.XR.WindowsMR.WindowsMRPackageSettings
     Unity.XR.WindowsMixedReality.dll:
+    - UnityEngine.XR.WindowsMR.WindowsMRBuildSettings
     - UnityEngine.XR.WindowsMR.WindowsMRLoader
+    - UnityEngine.XR.WindowsMR.WindowsMRSettings
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
@@ -887,7 +891,7 @@ ScriptsOnlyBuild:
     className: ColorAdjustments
   - hash:
       serializedVersion: 2
-      Hash: 002adcf6e9d3b5da88468c5c18edfc4e
+      Hash: 6bc5cf55412512209071c99987899699
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WallGenerator
@@ -1986,4 +1990,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/VR Rhythm Test.unity
-  playerPath: C:/Users/Arnaud/My project (1)/build08.apk
+  playerPath: C:/Users/Arnaud/My project (1)/builds/build09.apk
