@@ -29,7 +29,7 @@ public class ObstacleInterface : MonoBehaviour
     protected void passedPlayer(){
         HasPassed = true;
         if(isLast){
-            generator.EndLevel(1.0f);
+            StartCoroutine(generator.EndLevel(1.0f));
         }
     }
 }

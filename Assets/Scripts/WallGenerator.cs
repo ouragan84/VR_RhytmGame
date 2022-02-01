@@ -16,10 +16,9 @@ public class WallGenerator : MonoBehaviour
     public Transform VRLeft;
     public Transform VRRight;
     public TextMeshProUGUI scoreTotal;
-    public ScoreOutput scoreOutput;
+    public ScoreCanvasHelper scoreOut;
     public XRController RightController;
     public XRController LeftController;
-    public ComboUI comboUI;
     public bool followCurve = true;
     public AnimationCurve speedMultiplier;
     public InputHelpers.Button pauseButton;
@@ -31,7 +30,7 @@ public class WallGenerator : MonoBehaviour
     public bool isRandom = false;
     public Image[] SongCover;
     public TextMeshProUGUI[] SongTitle;
-    public GameObject EndMenu;
+    public EndMenuHelper EndMenu;
     public AudioClip endAudio;
 
     private bool wasPausedButtonPressedLastUpdate = false;
@@ -53,11 +52,16 @@ public class WallGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetUp();
+    }
+
+    public void SetUp(){
         loadLevels();
         loadAssetsFromLevel(0, "easy");
 
         PauseMenu.SetActive(false);
-        EndMenu.SetActive(false);
+        EndMenu.Disactivate();
+        scoreOut.Activate();
 
         source = GetComponent<AudioSource>();
         ObstacleInterface.generator = this;
@@ -117,6 +121,7 @@ public class WallGenerator : MonoBehaviour
         currentLevel = lvl;
         currentSong = Resources.Load<AudioClip>(levels.levels[currentLevel].song_path);
         currentSongIcon = Resources.Load<Sprite>(levels.levels[currentLevel].song_icon_path);
+        isRandom = levels.levels[currentLevel].isRandom;
 
         foreach (LevelStructure x in levels.levels[currentLevel].level_structure)
         {
@@ -131,9 +136,10 @@ public class WallGenerator : MonoBehaviour
     public IEnumerator EndLevel(float time)
     {
         yield return new WaitForSeconds(time);
-    
+
         source.PlayOneShot(endAudio);
-        EndMenu.SetActive(true);
+        EndMenu.Activate(Score);
+        scoreOut.Disactivate();
     }
 
     public void addScore(float headDis, float rightDis, float leftDis){
@@ -143,12 +149,12 @@ public class WallGenerator : MonoBehaviour
         addCombo(scoreIncrease);
         Score += Mathf.FloorToInt(scoreIncrease * comboMultiplier);
 
-        comboUI.updateCombo(combo);
+        scoreOut.updateCombo(combo);
 
         scoreFeedback(rightDis, leftDis);
 
         scoreTotal.text = "SCORE:\n" + Score;
-        scoreOutput.ShowScore(scoreIncrease);
+        scoreOut.ShowScore(scoreIncrease);
     }
 
     static int DistanceToScore(float dis){
@@ -163,12 +169,12 @@ public class WallGenerator : MonoBehaviour
         if(s <= 0){
             combo = 0;
             comboMultiplier = 1;
-            comboUI.upgrade(comboMultiplier, playAnim);
+            scoreOut.upgrade(comboMultiplier, playAnim);
         }else{
             combo += 1;
             if(comboMultiplier < 5f && Mathf.Floor(combo/4) + 1 != comboMultiplier){
                 comboMultiplier = Mathf.Floor(combo/4) + 1;
-                comboUI.upgrade(comboMultiplier, playAnim);
+                scoreOut.upgrade(comboMultiplier, playAnim);
             }
         }
     }
@@ -184,13 +190,13 @@ public class WallGenerator : MonoBehaviour
         Score = 0;
         scoreTotal.text = "SCORE:\n" + Score;
         addCombo(0, false);
-        comboUI.updateCombo(combo);
-        EndMenu.SetActive(false);
+        scoreOut.updateCombo(combo);
+        EndMenu.Disactivate();
+        scoreOut.Activate();
         ResumeGame();
     }
 
     void checkForInputs(){
-        //InputDevices.GetDeviceAtXRNode(RightController.controllerNode).TryGetFeatureValue(CommonUsages.menuButton, out bool isMenuPressedRight);
         InputHelpers.IsPressed(LeftController.inputDevice, pauseButton, out bool isMenuPressedLeft, .1f);
         InputHelpers.IsPressed(RightController.inputDevice, pauseButton, out bool isMenuPressedRight, .1f);
 
@@ -253,8 +259,8 @@ public class WallGenerator : MonoBehaviour
         hapticFeedback(true, 0.4f, 0.3f);
         hapticFeedback(false, 0.4f, 0.3f);
         addCombo(0);
-        comboUI.updateCombo(combo);
-        scoreOutput.ShowHit();
+        scoreOut.updateCombo(combo);
+        scoreOut.ShowHit();
     }
 
     public void ResetHeight(){

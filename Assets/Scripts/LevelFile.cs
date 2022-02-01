@@ -6,5 +6,6 @@ public class LevelFile
     public string song_path;
     public string song_icon_path;
     public float length;
+    public bool isRandom;
     public LevelStructure[] level_structure;
 }
