@@ -29,6 +29,7 @@ public class ScoreCanvasHelper : MonoBehaviour
     }
 
     public void Disactivate(){
+        scoreOutput.resetTransarency();
         canvas.SetActive(false);
     }
 }

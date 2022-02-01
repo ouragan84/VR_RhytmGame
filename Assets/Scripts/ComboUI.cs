@@ -40,7 +40,7 @@ public class ComboUI : MonoBehaviour
             if(playAnim)
                 anim.Play("Base Layer.ComboUpgrade", -1);
 
-            if(multiplier >= 5){
+            if(multiplier >= WallGenerator.maxComboMult){
                 image.sprite = Tiers[3];
             }else if(multiplier >= 3){
                 image.sprite = Tiers[2];

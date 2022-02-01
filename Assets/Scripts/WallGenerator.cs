@@ -33,6 +33,14 @@ public class WallGenerator : MonoBehaviour
     public EndMenuHelper EndMenu;
     public AudioClip endAudio;
 
+    public static int comboStep = 4;
+    public static float maxComboMult = 5f;
+    public static float lowDis = 10.0f;
+    public static float highDis = 40.0f;
+    public static int minScore = 50;
+    public static int maxScore = 500;
+    public static int perfectScore = 1000;
+
     private bool wasPausedButtonPressedLastUpdate = false;
     private int combo = 0;
     private float comboMultiplier = 0;
@@ -46,7 +54,7 @@ public class WallGenerator : MonoBehaviour
     private AudioClip currentSong;
     private Sprite currentSongIcon;
     private LevelStructure levelStructure;
-    private int lastIndexBuilt = -1;
+    private int lastIndexBuilt = -1; 
     
 
     // Start is called before the first frame update
@@ -57,7 +65,7 @@ public class WallGenerator : MonoBehaviour
 
     public void SetUp(){
         loadLevels();
-        loadAssetsFromLevel(0, "easy");
+        loadAssetsFromLevel(0, "easy"); //arbitrary values here
 
         PauseMenu.SetActive(false);
         EndMenu.Disactivate();
@@ -131,6 +139,8 @@ public class WallGenerator : MonoBehaviour
                 break;
             }
         }
+
+        EndMenu.setGradeKey(levels.key, levelStructure);
     }
 
     public IEnumerator EndLevel(float time)
@@ -158,13 +168,13 @@ public class WallGenerator : MonoBehaviour
     }
 
     static int DistanceToScore(float dis){
-        return (dis <= 8.0f? 1000 : (dis > 35.0f? 0 : Mathf.FloorToInt(vertexPointToQuad(35.0f, 50, 8.0f, 500, dis)))); 
+        return (dis <= lowDis? perfectScore : (dis > highDis? 0 : Mathf.FloorToInt(vertexPointToQuad(highDis, minScore, lowDis, maxScore, dis)))); //arbitrary values here
     }
 
     static float vertexPointToQuad(float vx, float vy, float x, float y, float t){
         return (y-vy)/Mathf.Pow(x-vx, 2) * Mathf.Pow(t-vx, 2) + vy;
     }
-
+    
     void addCombo(int s, bool playAnim = true){
         if(s <= 0){
             combo = 0;
@@ -172,8 +182,8 @@ public class WallGenerator : MonoBehaviour
             scoreOut.upgrade(comboMultiplier, playAnim);
         }else{
             combo += 1;
-            if(comboMultiplier < 5f && Mathf.Floor(combo/4) + 1 != comboMultiplier){
-                comboMultiplier = Mathf.Floor(combo/4) + 1;
+            if(comboMultiplier < maxComboMult && Mathf.Floor(combo/comboStep) + 1 != comboMultiplier){ //arbitrary values here
+                comboMultiplier = Mathf.Floor(combo/comboStep) + 1;                          //arbitrary values here
                 scoreOut.upgrade(comboMultiplier, playAnim);
             }
         }
@@ -183,7 +193,7 @@ public class WallGenerator : MonoBehaviour
         foreach(ObstacleInterface w in FindObjectsOfType<ObstacleInterface>()){
             Destroy(w.gameObject);
         }
-        songTimeElapsed = -1.0f;
+        songTimeElapsed = -1.0f; //arbitrary values here
         lastIndexBuilt = -1;
         source.Stop();
         source.PlayOneShot(currentSong);
@@ -234,12 +244,12 @@ public class WallGenerator : MonoBehaviour
     }
 
     void scoreFeedback(float rightDis, float leftDis){
-        if(rightDis >= 15f){
-            hapticFeedback(true, rightDis > 30f ? .5f : lineTwoPoints(15f, .1f, 30f, .5f, rightDis), 0.2f);
+        if(rightDis >= 15f){                                                                                //arbitrary values here
+            hapticFeedback(true, rightDis > 30f ? .5f : lineTwoPoints(15f, .1f, 30f, .5f, rightDis), 0.2f); //arbitrary values here 
         }
 
-        if(leftDis >= 15f){
-            hapticFeedback(false, leftDis > 30f ? .5f : lineTwoPoints(15f, .1f, 30f, .5f, leftDis), 0.2f);
+        if(leftDis >= 15f){                                                                                 //arbitrary values here
+            hapticFeedback(false, leftDis > 30f ? .5f : lineTwoPoints(15f, .1f, 30f, .5f, leftDis), 0.2f);  //arbitrary values here 
         }
     }
 
@@ -256,8 +266,8 @@ public class WallGenerator : MonoBehaviour
     }
 
     public void TakeDamage(bool head, bool right, bool left){
-        hapticFeedback(true, 0.4f, 0.3f);
-        hapticFeedback(false, 0.4f, 0.3f);
+        hapticFeedback(true, 0.4f, 0.3f);  //arbitrary values here
+        hapticFeedback(false, 0.4f, 0.3f); //arbitrary values here
         addCombo(0);
         scoreOut.updateCombo(combo);
         scoreOut.ShowHit();
@@ -265,8 +275,8 @@ public class WallGenerator : MonoBehaviour
 
     public void ResetHeight(){
         float playerHeight = FindObjectOfType<XROrigin>().CameraInOriginSpaceHeight + additionalHeight;
-        if(playerHeight > 2.5f) playerHeight = 2.5f;
-        if(playerHeight < 1.2f) playerHeight = 1.2f;
+        if(playerHeight > 2.5f) playerHeight = 2.5f; //arbitrary values here
+        if(playerHeight < 1.2f) playerHeight = 1.2f; //arbitrary values here
         
         transform.localScale = initialScale * (playerHeight / initialHeightOfPanels);
         transform.position = new Vector3(initialPosition.x, initialPosition.y*(transform.localScale.y/initialScale.y), initialPosition.z);

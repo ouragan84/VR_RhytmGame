@@ -4,9 +4,11 @@ ScriptsOnlyBuild:
     - Climber
     - ComboUI
     - ContiniousMovement
+    - EndMenuHelper
     - HandPresence
     - LocomotionController
     - Obstacle
+    - ScoreCanvasHelper
     - ScoreOutput
     - WallDance
     - WallGenerator
@@ -111,8 +113,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -213,119 +217,123 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2806}
     - Class: 114
-      Script: {instanceID: 3014}
+      Script: {instanceID: 3016}
     - Class: 114
-      Script: {instanceID: 3030}
+      Script: {instanceID: 3032}
     - Class: 114
-      Script: {instanceID: 3566}
+      Script: {instanceID: 3568}
     - Class: 114
-      Script: {instanceID: 3662}
+      Script: {instanceID: 3664}
     - Class: 114
-      Script: {instanceID: 3734}
+      Script: {instanceID: 3736}
     - Class: 114
-      Script: {instanceID: 3758}
+      Script: {instanceID: 3760}
     - Class: 114
-      Script: {instanceID: 3830}
+      Script: {instanceID: 3832}
     - Class: 114
-      Script: {instanceID: 3976}
+      Script: {instanceID: 3978}
     - Class: 114
-      Script: {instanceID: 4124}
+      Script: {instanceID: 4022}
     - Class: 114
-      Script: {instanceID: 4182}
+      Script: {instanceID: 4128}
     - Class: 114
-      Script: {instanceID: 4248}
+      Script: {instanceID: 4186}
     - Class: 114
-      Script: {instanceID: 4260}
+      Script: {instanceID: 4252}
     - Class: 114
-      Script: {instanceID: 4358}
+      Script: {instanceID: 4264}
     - Class: 114
-      Script: {instanceID: 4408}
+      Script: {instanceID: 4362}
     - Class: 114
-      Script: {instanceID: 4480}
+      Script: {instanceID: 4412}
     - Class: 114
-      Script: {instanceID: 4496}
+      Script: {instanceID: 4484}
     - Class: 114
-      Script: {instanceID: 4636}
+      Script: {instanceID: 4500}
     - Class: 114
-      Script: {instanceID: 4668}
+      Script: {instanceID: 4640}
     - Class: 114
-      Script: {instanceID: 4778}
+      Script: {instanceID: 4672}
     - Class: 114
-      Script: {instanceID: 4798}
+      Script: {instanceID: 4782}
     - Class: 114
-      Script: {instanceID: 4976}
+      Script: {instanceID: 4802}
     - Class: 114
-      Script: {instanceID: 5088}
+      Script: {instanceID: 4980}
     - Class: 114
-      Script: {instanceID: 5554}
+      Script: {instanceID: 5092}
     - Class: 114
-      Script: {instanceID: 5878}
+      Script: {instanceID: 5558}
     - Class: 114
-      Script: {instanceID: 5892}
+      Script: {instanceID: 5882}
     - Class: 114
-      Script: {instanceID: 5912}
+      Script: {instanceID: 5896}
     - Class: 114
-      Script: {instanceID: 5978}
+      Script: {instanceID: 5916}
     - Class: 114
-      Script: {instanceID: 5994}
+      Script: {instanceID: 5982}
     - Class: 114
-      Script: {instanceID: 6226}
+      Script: {instanceID: 5998}
     - Class: 114
-      Script: {instanceID: 6228}
+      Script: {instanceID: 6230}
     - Class: 114
-      Script: {instanceID: 6250}
+      Script: {instanceID: 6232}
     - Class: 114
-      Script: {instanceID: 6424}
+      Script: {instanceID: 6254}
     - Class: 114
-      Script: {instanceID: 6540}
+      Script: {instanceID: 6428}
     - Class: 114
-      Script: {instanceID: 6666}
+      Script: {instanceID: 6546}
     - Class: 114
-      Script: {instanceID: 6816}
+      Script: {instanceID: 6672}
     - Class: 114
-      Script: {instanceID: 6830}
+      Script: {instanceID: 6752}
     - Class: 114
-      Script: {instanceID: 6908}
+      Script: {instanceID: 6824}
     - Class: 114
-      Script: {instanceID: 6914}
+      Script: {instanceID: 6838}
     - Class: 114
-      Script: {instanceID: 7048}
+      Script: {instanceID: 6916}
     - Class: 114
-      Script: {instanceID: 7090}
+      Script: {instanceID: 6922}
     - Class: 114
-      Script: {instanceID: 7138}
+      Script: {instanceID: 7056}
     - Class: 114
-      Script: {instanceID: 7140}
+      Script: {instanceID: 7098}
     - Class: 114
-      Script: {instanceID: 7234}
+      Script: {instanceID: 7146}
     - Class: 114
-      Script: {instanceID: 7364}
+      Script: {instanceID: 7148}
     - Class: 114
-      Script: {instanceID: 7508}
+      Script: {instanceID: 7242}
     - Class: 114
-      Script: {instanceID: 7526}
+      Script: {instanceID: 7372}
     - Class: 114
-      Script: {instanceID: 7672}
+      Script: {instanceID: 7516}
     - Class: 114
-      Script: {instanceID: 7728}
+      Script: {instanceID: 7534}
     - Class: 114
-      Script: {instanceID: 7730}
+      Script: {instanceID: 7682}
     - Class: 114
-      Script: {instanceID: 7922}
+      Script: {instanceID: 7738}
     - Class: 114
-      Script: {instanceID: 8100}
+      Script: {instanceID: 7740}
     - Class: 114
-      Script: {instanceID: 8230}
+      Script: {instanceID: 7932}
     - Class: 114
-      Script: {instanceID: 8476}
+      Script: {instanceID: 8110}
     - Class: 114
-      Script: {instanceID: 8816}
+      Script: {instanceID: 8240}
     - Class: 114
-      Script: {instanceID: 9028}
+      Script: {instanceID: 8486}
     - Class: 114
-      Script: {instanceID: 9092}
+      Script: {instanceID: 8826}
+    - Class: 114
+      Script: {instanceID: 9038}
     - Class: 114
       Script: {instanceID: 9102}
+    - Class: 114
+      Script: {instanceID: 9112}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -435,7 +443,7 @@ ScriptsOnlyBuild:
     className: LayoutElement
   - hash:
       serializedVersion: 2
-      Hash: 9b794db45f8ec0eec4e05c295259b31f
+      Hash: 0b66966bd6e8a2499a845adfebbe97f7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WallDance
@@ -639,7 +647,7 @@ ScriptsOnlyBuild:
     className: WindowsMRRemotingConnector
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 9214002327d4c043af6e9077e16215c3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Obstacle
@@ -843,6 +851,12 @@ ScriptsOnlyBuild:
     className: TextMeshProFloatingText
   - hash:
       serializedVersion: 2
+      Hash: a143e2cca704018eadb75aba0824b5f9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EndMenuHelper
+  - hash:
+      serializedVersion: 2
       Hash: 3f8de4015b88591541365748fe8f7412
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
@@ -897,7 +911,7 @@ ScriptsOnlyBuild:
     className: ColorAdjustments
   - hash:
       serializedVersion: 2
-      Hash: 002adcf6e9d3b5da88468c5c18edfc4e
+      Hash: a14dd85988ef21f0536e21cb281689a2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WallGenerator
@@ -969,7 +983,7 @@ ScriptsOnlyBuild:
     className: XRInteractionManager
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 9214002327d4c043af6e9077e16215c3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ObstacleInterface
@@ -1441,6 +1455,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TextMeshSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: c69cd36a5bfe65f46bb4defe4dc9106c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScoreCanvasHelper
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -2020,4 +2040,5 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/VR Rhythm Test.unity
-  playerPath: C:/Users/Arnaud/My project (1)/windows build/VR Walls 08.exe
+  playerPath: C:/Users/Arnaud/My project (1)/builds/windows builds/build 02/VR Walls
+    12.exe
