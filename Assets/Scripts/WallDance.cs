@@ -18,7 +18,7 @@ public class WallDance : ObstacleInterface
         if(!isPaused){
             if(!HasPassed && Vector3.Dot(speed, VRHead.position - transform.position) <= 0){
                 CalculateScore();
-                HasPassed = true;
+                passedPlayer();
                 Destroy(gameObject, 8);
             }
         }

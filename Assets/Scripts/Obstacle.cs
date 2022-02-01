@@ -29,7 +29,7 @@ public class Obstacle : ObstacleInterface
                     generator.TakeDamage(HeadC, RightC, LeftC); 
 
                     hasHit = true;
-                    HasPassed = true;
+                    passedPlayer();
                 }
 
                 Destroy(gameObject, 8);
@@ -43,7 +43,7 @@ public class Obstacle : ObstacleInterface
         if(!isPaused){
             if(!HasPassed && Vector3.Dot(speed, VRHead.position - transform.position) <= 0){
                 //CalculateScore();
-                HasPassed = true;
+                passedPlayer();
                 Destroy(gameObject, 8);
             }
         }

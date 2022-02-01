@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using TMPro;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR;
 using Unity.XR.CoreUtils;
 using System.IO;
+using UnityEngine.UI;
 
 public class WallGenerator : MonoBehaviour
 {
@@ -29,6 +29,10 @@ public class WallGenerator : MonoBehaviour
     public InputHelpers.Button resetHeightButton;
     public TextAsset levelFile;
     public bool isRandom = false;
+    public Image[] SongCover;
+    public TextMeshProUGUI[] SongTitle;
+    public GameObject EndMenu;
+    public AudioClip endAudio;
 
     private bool wasPausedButtonPressedLastUpdate = false;
     private int combo = 0;
@@ -41,6 +45,7 @@ public class WallGenerator : MonoBehaviour
     private short currentLevel;
     private Levels levels;
     private AudioClip currentSong;
+    private Sprite currentSongIcon;
     private LevelStructure levelStructure;
     private int lastIndexBuilt = -1;
     
@@ -52,6 +57,7 @@ public class WallGenerator : MonoBehaviour
         loadAssetsFromLevel(0, "easy");
 
         PauseMenu.SetActive(false);
+        EndMenu.SetActive(false);
 
         source = GetComponent<AudioSource>();
         ObstacleInterface.generator = this;
@@ -67,7 +73,12 @@ public class WallGenerator : MonoBehaviour
         initialScale = transform.localScale;
         initialPosition = transform.position;
 
-        //readFileLevel(levelFilePaths[currentLevel]);
+        foreach(Image i in SongCover){
+            i.sprite = currentSongIcon;
+        }
+        foreach(TextMeshProUGUI t in SongTitle){
+            t.text = levels.levels[currentLevel].name;
+        }
     }
     
     void Update () {
@@ -77,11 +88,11 @@ public class WallGenerator : MonoBehaviour
         }else{
             songTimeElapsed += Time.deltaTime;
         }
-
-        if (Mathf.FloorToInt(songTimeElapsed / levelStructure.interval) > lastIndexBuilt ) {
+        
+        if (lastIndexBuilt < levelStructure.data_length-1 && Mathf.FloorToInt(songTimeElapsed / levelStructure.interval) > lastIndexBuilt) {
             lastIndexBuilt = Mathf.FloorToInt(songTimeElapsed / levelStructure.interval);
+            GameObject obj = null;
 
-            GameObject obj;
             if(isRandom)
                 obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], initialPosition, transform.rotation);
             else{
@@ -89,8 +100,11 @@ public class WallGenerator : MonoBehaviour
                 if(id >= 0)
                     obj = Instantiate(Walls[id], initialPosition, transform.rotation);
             }
-                
+
+            if(obj != null && lastIndexBuilt >= levelStructure.data_length-1)
+                obj.GetComponent<ObstacleInterface>().isLast = true;
         }
+        
 
         checkForInputs();
     }
@@ -102,7 +116,7 @@ public class WallGenerator : MonoBehaviour
     public void loadAssetsFromLevel(short lvl, string difficulty){
         currentLevel = lvl;
         currentSong = Resources.Load<AudioClip>(levels.levels[currentLevel].song_path);
-        Debug.Log(levels.levels[currentLevel].song_path);
+        currentSongIcon = Resources.Load<Sprite>(levels.levels[currentLevel].song_icon_path);
 
         foreach (LevelStructure x in levels.levels[currentLevel].level_structure)
         {
@@ -112,6 +126,14 @@ public class WallGenerator : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public IEnumerator EndLevel(float time)
+    {
+        yield return new WaitForSeconds(time);
+    
+        source.PlayOneShot(endAudio);
+        EndMenu.SetActive(true);
     }
 
     public void addScore(float headDis, float rightDis, float leftDis){
@@ -163,6 +185,7 @@ public class WallGenerator : MonoBehaviour
         scoreTotal.text = "SCORE:\n" + Score;
         addCombo(0, false);
         comboUI.updateCombo(combo);
+        EndMenu.SetActive(false);
         ResumeGame();
     }
 
@@ -237,7 +260,7 @@ public class WallGenerator : MonoBehaviour
     public void ResetHeight(){
         float playerHeight = FindObjectOfType<XROrigin>().CameraInOriginSpaceHeight + additionalHeight;
         if(playerHeight > 2.5f) playerHeight = 2.5f;
-        if(playerHeight < 1.0f) playerHeight = 1.2f;
+        if(playerHeight < 1.2f) playerHeight = 1.2f;
         
         transform.localScale = initialScale * (playerHeight / initialHeightOfPanels);
         transform.position = new Vector3(initialPosition.x, initialPosition.y*(transform.localScale.y/initialScale.y), initialPosition.z);

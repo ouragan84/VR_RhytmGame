@@ -15,6 +15,7 @@ public class ObstacleInterface : MonoBehaviour
     protected float timeCreated;
     public static bool isPaused = false;
     public static float totalTimePaused = 0.0f;
+    public bool isLast = false;
 
     protected void Start(){
         timeCreated = Time.time - totalTimePaused;
@@ -23,5 +24,12 @@ public class ObstacleInterface : MonoBehaviour
     protected void FixedUpdate(){
         float mult = followCurve?speedMultiplier.Evaluate(Time.time-timeCreated-totalTimePaused):1;
         transform.Translate(speed*mult*Time.fixedDeltaTime);
+    }
+
+    protected void passedPlayer(){
+        HasPassed = true;
+        if(isLast){
+            generator.EndLevel(1.0f);
+        }
     }
 }
