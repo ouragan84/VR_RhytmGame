@@ -1,0 +1,18 @@
+{
+    "environements":[
+        {
+            "id":0,
+            "name":"brick world",
+            "scene_path":"VR Test Environement 1",
+            "icon_path":"Environements/icons/bricklvl",
+            "generator_position":[0,15]
+        },
+        {
+            "id":1,
+            "name":"cube world",
+            "scene_path":"VR Test Environement 2",
+            "icon_path":"Environements/icons/cubelvl",
+            "generator_position":[0,15]
+        }
+    ]
+}

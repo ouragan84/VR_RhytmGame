@@ -4,8 +4,10 @@
 
         {
             "id":0,
-            "name":"boring techno music",
-            "song_path":"Sounds/music_techno01",
+            "name":"Moose",
+            "author":"bensound",
+            "song_path":"Sounds/Songs/bensound-moose",
+            "preview_path":"Sounds/Songs/previews/bensound-moose-preview",
             "song_icon_path":"SongIcons/icon01",
             "length":2.40,
             "isRandom":false,
@@ -20,16 +22,42 @@
                     "difficulty":"medium",
                     "interval":2.0,
                     "data_length":5,
-                    "data": [1,0,2,0,4]
+                    "data": [1,0,2,0,5,6,7,0,4,0,2,0,3,0,1,0,2,3,0,7,1,4,0,1,4,0,5,6,5,6,0,2,0,3,0,2,0,5,4,0,1,0,2,0,3,0,2,0,3,0,1,1,0,4,0,1,0,6,5,6,0,2,0,3,0,2,3,4,1,0,4,0,6,7,0,4,1,4,0,4]
                 }
             ]
         },
         {
             "id":1,
-            "name":"boring techno music 2",
-            "song_path":"Sounds/music_techno01",
-            "song_icon_path":"SongIcons/icon01",
-            "length":2.15,
+            "name":"happyrock",
+            "author":"bensound",
+            "song_path":"Sounds/Songs/bensound-happyrock",
+            "preview_path":"Sounds/Songs/previews/bensound-happyrock-preview",
+            "song_icon_path":"SongIcons/icon03",
+            "length":1.50,
+            "isRandom":false,
+            "level_structure":[
+                {
+                    "difficulty":"easy",
+                    "interval":0.5,
+                    "data_length":9,
+                    "data": [1,0,2,0,5,6,7,0,4]
+                },
+                {
+                    "difficulty":"medium",
+                    "interval":1.5,
+                    "data_length":90,
+                    "data": [1,0,2,0,5,6,7,0,4,0,2,0,3,0,1,0,2,3,0,7,1,4,0,1,4,0,5,6,5,6,0,2,0,3,0,2,0,5,4,0,1,0,2,0,3,0,2,0,3,0,1,1,0,4,0,1,0,6,5,6,0,2,0,3,0,2,3,4,1,0,4,0,6,7,0,4,1,4,0,0,4,1,4,7,0,2,0,1,2,4]
+                }
+            ]
+        },
+        {
+            "id":1,
+            "name":"epic",
+            "author":"bensound",
+            "song_path":"Sounds/Songs/bensound-epic",
+            "preview_path":"Sounds/Songs/previews/bensound-epic-preview",
+            "song_icon_path":"SongIcons/icon02",
+            "length":2.50,
             "isRandom":false,
             "level_structure":[
                 {

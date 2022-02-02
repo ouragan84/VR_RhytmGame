@@ -26,10 +26,10 @@ public class WallGenerator : MonoBehaviour
     public float additionalHeight = 0.10f;
     public float initialHeightOfPanels = 1.75f;
     public InputHelpers.Button resetHeightButton;
-    public TextAsset levelFile;
     public bool isRandom = false;
     public Image[] SongCover;
     public TextMeshProUGUI[] SongTitle;
+    public TextMeshProUGUI[] AuthorName;
     public EndMenuHelper EndMenu;
     public AudioClip endAudio;
 
@@ -40,6 +40,7 @@ public class WallGenerator : MonoBehaviour
     public static int minScore = 50;
     public static int maxScore = 500;
     public static int perfectScore = 1000;
+    public static Levels levels;
 
     private bool wasPausedButtonPressedLastUpdate = false;
     private int combo = 0;
@@ -50,31 +51,16 @@ public class WallGenerator : MonoBehaviour
     private Vector3 initialScale;
     private Vector3 initialPosition;
     private short currentLevel;
-    private Levels levels;
     private AudioClip currentSong;
     private Sprite currentSongIcon;
     private LevelStructure levelStructure;
     private int lastIndexBuilt = -1; 
+    private bool hasLevelStarted = false;
     
 
     // Start is called before the first frame update
-    void Start()
-    {
-        SetUp();
-    }
-
-    public void SetUp(){
-        loadLevels();
-        loadAssetsFromLevel(0, "easy"); //arbitrary values here
-
-        PauseMenu.SetActive(false);
-        EndMenu.Disactivate();
-        scoreOut.Activate();
-
-        source = GetComponent<AudioSource>();
+    void Start(){
         ObstacleInterface.generator = this;
-        source.PlayOneShot(currentSong);
-        
         ObstacleInterface.VRRight = VRRight;
         ObstacleInterface.VRLeft = VRLeft;
         ObstacleInterface.VRHead = VRHead;
@@ -82,8 +68,20 @@ public class WallGenerator : MonoBehaviour
         ObstacleInterface.speedMultiplier = speedMultiplier;
         ObstacleInterface.followCurve = followCurve;
 
+        source = GetComponent<AudioSource>();
+
         initialScale = transform.localScale;
         initialPosition = transform.position;
+    }
+
+    public void StartLevel(short lvl, string difficulty){
+        loadAssetsFromLevel(lvl, difficulty); //arbitrary values here
+
+        PauseMenu.SetActive(false);
+        EndMenu.Disactivate();
+        scoreOut.Activate();
+
+        source.PlayOneShot(currentSong);
 
         foreach(Image i in SongCover){
             i.sprite = currentSongIcon;
@@ -91,38 +89,39 @@ public class WallGenerator : MonoBehaviour
         foreach(TextMeshProUGUI t in SongTitle){
             t.text = levels.levels[currentLevel].name;
         }
+        foreach(TextMeshProUGUI t in AuthorName){
+            t.text = levels.levels[currentLevel].author;
+        }
+
+        hasLevelStarted = true;
     }
     
-    void Update () {
-
-        if(Obstacle.isPaused){
-            Obstacle.totalTimePaused += Time.deltaTime;
-        }else{
-            songTimeElapsed += Time.deltaTime;
-        }
-        
-        if (lastIndexBuilt < levelStructure.data_length-1 && Mathf.FloorToInt(songTimeElapsed / levelStructure.interval) > lastIndexBuilt) {
-            lastIndexBuilt = Mathf.FloorToInt(songTimeElapsed / levelStructure.interval);
-            GameObject obj = null;
-
-            if(isRandom)
-                obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], initialPosition, transform.rotation);
-            else{
-                int id = levelStructure.data[lastIndexBuilt] - 1;
-                if(id >= 0)
-                    obj = Instantiate(Walls[id], initialPosition, transform.rotation);
+    void Update(){
+        if(hasLevelStarted){
+            if(Obstacle.isPaused){
+                Obstacle.totalTimePaused += Time.deltaTime;
+            }else{
+                songTimeElapsed += Time.deltaTime;
             }
 
-            if(obj != null && lastIndexBuilt >= levelStructure.data_length-1)
-                obj.GetComponent<ObstacleInterface>().isLast = true;
+            if (lastIndexBuilt < levelStructure.data_length-1 && Mathf.FloorToInt(songTimeElapsed / levelStructure.interval) > lastIndexBuilt) {
+                lastIndexBuilt = Mathf.FloorToInt(songTimeElapsed / levelStructure.interval);
+                GameObject obj = null;
+
+                if(isRandom)
+                    obj = Instantiate(Walls[(int)Random.Range(0,Walls.Length)], initialPosition, transform.rotation);
+                else{
+                    int id = levelStructure.data[lastIndexBuilt] - 1;
+                    if(id >= 0)
+                        obj = Instantiate(Walls[id], initialPosition, transform.rotation);
+                }
+
+                if(obj != null && lastIndexBuilt >= levelStructure.data_length-1)
+                    obj.GetComponent<ObstacleInterface>().isLast = true;
+            }
         }
         
-
         checkForInputs();
-    }
-
-    public void loadLevels(){
-        levels = JsonUtility.FromJson<Levels>(levelFile.text);
     }
 
     public void loadAssetsFromLevel(short lvl, string difficulty){
@@ -231,16 +230,24 @@ public class WallGenerator : MonoBehaviour
 
     public void PauseGame(){
         //Time.timeScale = 0.0f;
-        Obstacle.isPaused = true;
-        source.Pause();
-        PauseMenu.SetActive(true);
+        if(hasLevelStarted){
+            Obstacle.isPaused = true;
+            source.Pause();
+            PauseMenu.SetActive(true);
+        }else{
+
+        }
     }
 
     public void ResumeGame(){
         //Time.timeScale = 1.0f;
-        Obstacle.isPaused = false;
-        source.UnPause();
-        PauseMenu.SetActive(false);
+        if(hasLevelStarted){
+            Obstacle.isPaused = false;
+            source.UnPause();
+            PauseMenu.SetActive(false);
+        }else{
+
+        }
     }
 
     void scoreFeedback(float rightDis, float leftDis){
@@ -283,6 +290,7 @@ public class WallGenerator : MonoBehaviour
     }
 
     public void QuitLevel(){
+        hasLevelStarted = false;
         Application.Quit();
     }
 }
