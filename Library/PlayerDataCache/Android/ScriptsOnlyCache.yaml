@@ -1,17 +1,18 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - Climber
     - ComboUI
-    - ContiniousMovement
     - EndMenuHelper
     - HandPresence
-    - LocomotionController
+    - LevelSelector
     - Obstacle
+    - SaveSystem
     - ScoreCanvasHelper
     - ScoreOutput
     - WallDance
     - WallGenerator
+    - dontDestroyOnLoad
+    - fadeIn_Out
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
@@ -68,11 +69,9 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.Interaction.Toolkit.DeviceBasedSnapTurnProvider
     - UnityEngine.XR.Interaction.Toolkit.InteractionLayerSettings
     - UnityEngine.XR.Interaction.Toolkit.LocomotionSystem
-    - UnityEngine.XR.Interaction.Toolkit.TeleportationProvider
     - UnityEngine.XR.Interaction.Toolkit.UI.TrackedDeviceGraphicRaycaster
     - UnityEngine.XR.Interaction.Toolkit.UI.XRUIInputModule
     - UnityEngine.XR.Interaction.Toolkit.XRController
-    - UnityEngine.XR.Interaction.Toolkit.XRDirectInteractor
     - UnityEngine.XR.Interaction.Toolkit.XRInteractionManager
     - UnityEngine.XR.Interaction.Toolkit.XRInteractorLineVisual
     - UnityEngine.XR.Interaction.Toolkit.XRRayInteractor
@@ -116,7 +115,7 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineInspector
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
@@ -127,6 +126,7 @@ ScriptsOnlyBuild:
     - UnityEngine.SpatialTracking.TrackedPoseDriver
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.ContentSizeFitter
@@ -142,7 +142,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/VR Rhythm Test.unity:
+    Assets/Scenes/VR Start Scene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -162,8 +162,6 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 49
-      Script: {instanceID: 0}
-    - Class: 64
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
@@ -218,130 +216,128 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2806}
     - Class: 114
-      Script: {instanceID: 3016}
+      Script: {instanceID: 2866}
     - Class: 114
-      Script: {instanceID: 3032}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 3568}
+      Script: {instanceID: 3034}
     - Class: 114
-      Script: {instanceID: 3664}
+      Script: {instanceID: 3574}
     - Class: 114
-      Script: {instanceID: 3736}
+      Script: {instanceID: 3670}
     - Class: 114
-      Script: {instanceID: 3760}
+      Script: {instanceID: 3742}
     - Class: 114
-      Script: {instanceID: 3832}
+      Script: {instanceID: 3766}
     - Class: 114
-      Script: {instanceID: 3978}
+      Script: {instanceID: 3838}
     - Class: 114
-      Script: {instanceID: 4022}
+      Script: {instanceID: 3984}
     - Class: 114
-      Script: {instanceID: 4128}
+      Script: {instanceID: 4028}
     - Class: 114
-      Script: {instanceID: 4186}
+      Script: {instanceID: 4134}
     - Class: 114
-      Script: {instanceID: 4252}
+      Script: {instanceID: 4192}
     - Class: 114
-      Script: {instanceID: 4264}
+      Script: {instanceID: 4258}
     - Class: 114
-      Script: {instanceID: 4362}
+      Script: {instanceID: 4270}
     - Class: 114
-      Script: {instanceID: 4412}
+      Script: {instanceID: 4368}
     - Class: 114
-      Script: {instanceID: 4484}
+      Script: {instanceID: 4490}
     - Class: 114
-      Script: {instanceID: 4500}
+      Script: {instanceID: 4506}
     - Class: 114
-      Script: {instanceID: 4640}
+      Script: {instanceID: 4646}
     - Class: 114
-      Script: {instanceID: 4672}
+      Script: {instanceID: 4678}
     - Class: 114
-      Script: {instanceID: 4782}
+      Script: {instanceID: 4788}
     - Class: 114
-      Script: {instanceID: 4802}
+      Script: {instanceID: 4808}
     - Class: 114
-      Script: {instanceID: 4980}
+      Script: {instanceID: 4986}
     - Class: 114
-      Script: {instanceID: 5092}
+      Script: {instanceID: 5098}
     - Class: 114
-      Script: {instanceID: 5558}
+      Script: {instanceID: 5566}
     - Class: 114
-      Script: {instanceID: 5882}
+      Script: {instanceID: 5890}
     - Class: 114
-      Script: {instanceID: 5896}
+      Script: {instanceID: 5904}
     - Class: 114
-      Script: {instanceID: 5916}
+      Script: {instanceID: 5924}
     - Class: 114
-      Script: {instanceID: 5982}
+      Script: {instanceID: 5990}
     - Class: 114
-      Script: {instanceID: 5998}
+      Script: {instanceID: 6006}
     - Class: 114
-      Script: {instanceID: 6230}
+      Script: {instanceID: 6238}
     - Class: 114
-      Script: {instanceID: 6232}
+      Script: {instanceID: 6240}
     - Class: 114
-      Script: {instanceID: 6254}
+      Script: {instanceID: 6262}
     - Class: 114
-      Script: {instanceID: 6428}
+      Script: {instanceID: 6436}
     - Class: 114
-      Script: {instanceID: 6546}
+      Script: {instanceID: 6554}
     - Class: 114
-      Script: {instanceID: 6672}
+      Script: {instanceID: 6682}
     - Class: 114
-      Script: {instanceID: 6752}
+      Script: {instanceID: 6762}
     - Class: 114
-      Script: {instanceID: 6824}
+      Script: {instanceID: 6834}
     - Class: 114
-      Script: {instanceID: 6838}
+      Script: {instanceID: 6848}
     - Class: 114
-      Script: {instanceID: 6916}
+      Script: {instanceID: 6926}
     - Class: 114
-      Script: {instanceID: 6922}
+      Script: {instanceID: 6932}
     - Class: 114
-      Script: {instanceID: 7056}
+      Script: {instanceID: 7066}
     - Class: 114
-      Script: {instanceID: 7098}
+      Script: {instanceID: 7108}
     - Class: 114
-      Script: {instanceID: 7146}
+      Script: {instanceID: 7156}
     - Class: 114
-      Script: {instanceID: 7148}
+      Script: {instanceID: 7158}
     - Class: 114
-      Script: {instanceID: 7242}
+      Script: {instanceID: 7252}
     - Class: 114
-      Script: {instanceID: 7372}
+      Script: {instanceID: 7382}
     - Class: 114
-      Script: {instanceID: 7516}
+      Script: {instanceID: 7544}
     - Class: 114
-      Script: {instanceID: 7534}
+      Script: {instanceID: 7692}
     - Class: 114
-      Script: {instanceID: 7682}
+      Script: {instanceID: 7748}
     - Class: 114
-      Script: {instanceID: 7738}
+      Script: {instanceID: 7750}
     - Class: 114
-      Script: {instanceID: 7740}
+      Script: {instanceID: 8104}
     - Class: 114
-      Script: {instanceID: 7932}
+      Script: {instanceID: 8120}
     - Class: 114
-      Script: {instanceID: 8110}
+      Script: {instanceID: 8286}
     - Class: 114
-      Script: {instanceID: 8240}
+      Script: {instanceID: 8498}
     - Class: 114
-      Script: {instanceID: 8486}
+      Script: {instanceID: 8540}
     - Class: 114
-      Script: {instanceID: 8826}
+      Script: {instanceID: 8840}
     - Class: 114
-      Script: {instanceID: 9038}
+      Script: {instanceID: 9052}
     - Class: 114
-      Script: {instanceID: 9102}
+      Script: {instanceID: 9126}
     - Class: 114
-      Script: {instanceID: 9112}
+      Script: {instanceID: 47624}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
       Script: {instanceID: 0}
     - Class: 128
-      Script: {instanceID: 0}
-    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -362,6 +358,76 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 258
+      Script: {instanceID: 0}
+    - Class: 850595691
+      Script: {instanceID: 0}
+    Assets/Scenes/VR Test Environement 1.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 258
+      Script: {instanceID: 0}
+    - Class: 850595691
+      Script: {instanceID: 0}
+    Assets/Scenes/VR Test Environement 2.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 258
+      Script: {instanceID: 0}
+    - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -630,6 +696,12 @@ ScriptsOnlyBuild:
     className: XRSystemData
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SaveSystem
+  - hash:
+      serializedVersion: 2
       Hash: 27e5341178f188b89bdc6495710b590c
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -846,7 +918,7 @@ ScriptsOnlyBuild:
     className: TextMeshProFloatingText
   - hash:
       serializedVersion: 2
-      Hash: a143e2cca704018eadb75aba0824b5f9
+      Hash: 088d693ef2719d41674d70ce81460526
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EndMenuHelper
@@ -906,7 +978,7 @@ ScriptsOnlyBuild:
     className: ColorAdjustments
   - hash:
       serializedVersion: 2
-      Hash: a14dd85988ef21f0536e21cb281689a2
+      Hash: 80934ae617165700259508fc84b2b27e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WallGenerator
@@ -1818,6 +1890,12 @@ ScriptsOnlyBuild:
     className: Climber
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: dontDestroyOnLoad
+  - hash:
+      serializedVersion: 2
       Hash: ea41fa959037983f32ebd7c70de46554
     assemblyName: Unity.XR.OpenXR.dll
     namespaceName: UnityEngine.XR.OpenXR.Features.Interactions
@@ -1858,6 +1936,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ScrollRect
+  - hash:
+      serializedVersion: 2
+      Hash: 1c72689a9094b8ce321963e3562a00aa
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LevelSelector
   - hash:
       serializedVersion: 2
       Hash: 134520f170644886bce038a4038a42c9
@@ -2008,7 +2092,21 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: Benchmark01
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: fadeIn_Out
+  - hash:
+      serializedVersion: 2
+      Hash: 51c65fd55b2c091a06f1b8e2cb39e985
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AddHapticUI
   platform: 13
   scenePathNames:
-  - Assets/Scenes/VR Rhythm Test.unity
-  playerPath: C:/Users/Arnaud/My project (1)/builds/build12.apk
+  - Assets/Scenes/VR Start Scene.unity
+  - Assets/Scenes/VR Test Environement 1.unity
+  - Assets/Scenes/VR Test Environement 2.unity
+  playerPath: C:/Users/Arnaud/My project (1)/builds/build13.apk

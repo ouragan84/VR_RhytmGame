@@ -26,6 +26,7 @@ public class ScoreCanvasHelper : MonoBehaviour
 
     public void Activate(){
         canvas.SetActive(true);
+        comboUI.setUp();
     }
 
     public void Disactivate(){

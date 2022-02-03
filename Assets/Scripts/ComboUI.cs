@@ -17,8 +17,8 @@ public class ComboUI : MonoBehaviour
     public AudioClip ComboUpgradeSound;
     private AudioSource source;
     //private bool isShowing = false;
-    // Start is called before the first frame update
-    void Start()
+
+    public void setUp()
     {
         source = GetComponent<AudioSource>();
         image = GetComponent<Image>();

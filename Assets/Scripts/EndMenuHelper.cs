@@ -11,28 +11,43 @@ public class EndMenuHelper : MonoBehaviour
     private int score = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI GradeText;
+    public GameObject newHigh;
+    public GameObject notNewHigh;
     private Animator anim;
     private int maxTotalScore;
+    private LevelSelector selector;
+    private int levelID;
+    private short difficulty;
 
     void Start(){
         anim = GetComponent<Animator>();
     }
 
     void Update(){
-        scoreText.text = Mathf.FloorToInt(scoreMult * score ).ToString();
+        scoreText.text = LevelSelector.formatScore(Mathf.FloorToInt(scoreMult * score));
     }
 
     public void showGrade(){
-        GradeText.text = "Grade: " + calculateGrade();
+        GradeText.text = "" + calculateGrade();
     }
 
     public void showHighScore(){
+        if(score > selector.getHighScore(levelID, difficulty)){
+            newHigh.SetActive(true);
+            notNewHigh.SetActive(false);
+            selector.setNewHighScore(score, calculateGrade(), levelID, difficulty);
+        }else{
+            newHigh.SetActive(false);
+            notNewHigh.SetActive(true);
+            notNewHigh.transform.Find("Score").GetComponent<TextMeshProUGUI>().text = LevelSelector.formatScore(selector.getHighScore(levelID, difficulty));
+            notNewHigh.transform.Find("Grade").GetComponent<TextMeshProUGUI>().text = selector.getHighGrade(levelID, difficulty);
+        }
+        
         // show highscore
     }
 
     public string calculateGrade(){
         float percentage = 100 * score/maxTotalScore;
-        Debug.Log(percentage);
         if(percentage >= 110.0f) return "SS";
         if(percentage >= 100.0f) return "S";
         if(percentage >= 90.0f) return "A+";
@@ -63,9 +78,14 @@ public class EndMenuHelper : MonoBehaviour
         return Mathf.FloorToInt(x);
     }
 
-    public void Activate(int scoreSet){
+    public void Activate(int scoreSet, LevelSelector selector, int id, short diff){
+        this.levelID = id;
+        this.difficulty = diff;
         this.score = scoreSet;
+        this.selector = selector;
         canvas.SetActive(true);
+        newHigh.SetActive(false);
+        notNewHigh.SetActive(false);
         anim.Play("Base Layer.EndMenuStartAnim", -1);
     }
 

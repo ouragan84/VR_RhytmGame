@@ -248,8 +248,8 @@
      <Compile Include="Packages\com.unity.timeline\Editor\Undo\UndoScope.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\CustomEditors\TrackEditor.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Window\TimelineWindow_StateChange.cs" />
-     <Compile Include="Packages\com.unity.timeline\Editor\inspectors\MarkerInspector.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Attributes\ShortcutAttribute.cs" />
+     <Compile Include="Packages\com.unity.timeline\Editor\inspectors\MarkerInspector.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Manipulators\Sequence\RectangleZoom.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\treeview\TimelineClipUnion.cs" />
      <Compile Include="Packages\com.unity.timeline\Editor\Window\TimelineWindow_Selection.cs" />

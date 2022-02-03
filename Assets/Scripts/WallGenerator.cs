@@ -32,6 +32,7 @@ public class WallGenerator : MonoBehaviour
     public TextMeshProUGUI[] AuthorName;
     public EndMenuHelper EndMenu;
     public AudioClip endAudio;
+    public TextMeshProUGUI[] difficultyTexts;
 
     public static int comboStep = 4;
     public static float maxComboMult = 5f;
@@ -44,18 +45,20 @@ public class WallGenerator : MonoBehaviour
 
     private bool wasPausedButtonPressedLastUpdate = false;
     private int combo = 0;
-    private float comboMultiplier = 0;
+    private float comboMultiplier = 1;
     private float songTimeElapsed = -1.0f;
     private AudioSource source;
     private int Score = 0;
     private Vector3 initialScale;
     private Vector3 initialPosition;
-    private short currentLevel;
+    private int currentLevel;
     private AudioClip currentSong;
     private Sprite currentSongIcon;
     private LevelStructure levelStructure;
     private int lastIndexBuilt = -1; 
     private bool hasLevelStarted = false;
+    private LevelSelector levelSelector;
+    private short currentDifficulty;
     
 
     // Start is called before the first frame update
@@ -69,17 +72,14 @@ public class WallGenerator : MonoBehaviour
         ObstacleInterface.followCurve = followCurve;
 
         source = GetComponent<AudioSource>();
+        levelSelector = GameObject.FindObjectOfType<LevelSelector>();
 
         initialScale = transform.localScale;
         initialPosition = transform.position;
     }
 
-    public void StartLevel(short lvl, string difficulty){
-        loadAssetsFromLevel(lvl, difficulty); //arbitrary values here
-
-        PauseMenu.SetActive(false);
-        EndMenu.Disactivate();
-        scoreOut.Activate();
+    public void StartLevel(int lvl, short difficultyID, string difficulty){
+        loadAssetsFromLevel(lvl, difficultyID); //arbitrary values here
 
         source.PlayOneShot(currentSong);
 
@@ -92,7 +92,11 @@ public class WallGenerator : MonoBehaviour
         foreach(TextMeshProUGUI t in AuthorName){
             t.text = levels.levels[currentLevel].author;
         }
+        foreach(TextMeshProUGUI t in difficultyTexts){
+            t.text = difficulty;
+        }
 
+        restart();
         hasLevelStarted = true;
     }
     
@@ -124,20 +128,13 @@ public class WallGenerator : MonoBehaviour
         checkForInputs();
     }
 
-    public void loadAssetsFromLevel(short lvl, string difficulty){
+    public void loadAssetsFromLevel(int lvl, short difficulty){
         currentLevel = lvl;
+        currentDifficulty = difficulty;
         currentSong = Resources.Load<AudioClip>(levels.levels[currentLevel].song_path);
         currentSongIcon = Resources.Load<Sprite>(levels.levels[currentLevel].song_icon_path);
         isRandom = levels.levels[currentLevel].isRandom;
-
-        foreach (LevelStructure x in levels.levels[currentLevel].level_structure)
-        {
-            if (x.difficulty.Equals(difficulty))
-            {
-                levelStructure = x;
-                break;
-            }
-        }
+        levelStructure = levels.levels[currentLevel].level_structure[difficulty];
 
         EndMenu.setGradeKey(levels.key, levelStructure);
     }
@@ -147,7 +144,7 @@ public class WallGenerator : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         source.PlayOneShot(endAudio);
-        EndMenu.Activate(Score);
+        EndMenu.Activate(Score, levelSelector, currentLevel, currentDifficulty);
         scoreOut.Disactivate();
     }
 
@@ -162,7 +159,7 @@ public class WallGenerator : MonoBehaviour
 
         scoreFeedback(rightDis, leftDis);
 
-        scoreTotal.text = "SCORE:\n" + Score;
+        scoreTotal.text = "SCORE:\n" + LevelSelector.formatScore(Score);
         scoreOut.ShowScore(scoreIncrease);
     }
 
@@ -197,11 +194,11 @@ public class WallGenerator : MonoBehaviour
         source.Stop();
         source.PlayOneShot(currentSong);
         Score = 0;
-        scoreTotal.text = "SCORE:\n" + Score;
-        addCombo(0, false);
-        scoreOut.updateCombo(combo);
+        scoreTotal.text = "SCORE:\n" + LevelSelector.formatScore(Score);
         EndMenu.Disactivate();
         scoreOut.Activate();
+        addCombo(0, false);
+        scoreOut.updateCombo(combo);
         ResumeGame();
     }
 
@@ -229,25 +226,17 @@ public class WallGenerator : MonoBehaviour
     }
 
     public void PauseGame(){
-        //Time.timeScale = 0.0f;
         if(hasLevelStarted){
             Obstacle.isPaused = true;
             source.Pause();
             PauseMenu.SetActive(true);
-        }else{
-
         }
     }
 
     public void ResumeGame(){
-        //Time.timeScale = 1.0f;
-        if(hasLevelStarted){
-            Obstacle.isPaused = false;
-            source.UnPause();
-            PauseMenu.SetActive(false);
-        }else{
-
-        }
+        Obstacle.isPaused = false;
+        source.UnPause();
+        PauseMenu.SetActive(false);
     }
 
     void scoreFeedback(float rightDis, float leftDis){
@@ -290,7 +279,14 @@ public class WallGenerator : MonoBehaviour
     }
 
     public void QuitLevel(){
+        foreach(ObstacleInterface w in FindObjectsOfType<ObstacleInterface>()){
+            Destroy(w.gameObject);
+        }
         hasLevelStarted = false;
-        Application.Quit();
+        source.Stop();
+        PauseMenu.SetActive(false);
+        EndMenu.Disactivate();
+        scoreOut.Disactivate();
+        levelSelector.enableMenu();
     }
 }

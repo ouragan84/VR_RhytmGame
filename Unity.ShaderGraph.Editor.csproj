@@ -151,8 +151,8 @@
      <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Views\Slots\UVSlotControlView.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Math\Range\OneMinusNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Artistic\Utility\ColorspaceConversion.cs" />
-     <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Manipulators\Draggable.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Graphs\VirtualTextureMaterialSlot.cs" />
+     <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Manipulators\Draggable.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Nodes\Input\Geometry\UVNode.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Data\Interfaces\IMayRequireVertexColor.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Drawing\Views\IdentifierField.cs" />
