@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 24861369}
   m_Layer: 5
   m_Name: Resume
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 67676826}
   m_Layer: 5
   m_Name: Restart Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1939,7 +1939,7 @@ GameObject:
   - component: {fileID: 313032312}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3224,7 +3224,7 @@ GameObject:
   - component: {fileID: 577826486}
   m_Layer: 5
   m_Name: Quit
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3852,7 +3852,7 @@ GameObject:
   - component: {fileID: 653465065}
   m_Layer: 5
   m_Name: Start Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4115,7 +4115,7 @@ GameObject:
   - component: {fileID: 657741267}
   m_Layer: 5
   m_Name: Environement Button (1)
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5092,7 +5092,7 @@ GameObject:
   - component: {fileID: 789875657}
   m_Layer: 5
   m_Name: Easy Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7340,7 +7340,7 @@ GameObject:
   - component: {fileID: 1121582868}
   m_Layer: 5
   m_Name: Level Button (2)
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7475,7 +7475,7 @@ GameObject:
   - component: {fileID: 1153389459}
   m_Layer: 5
   m_Name: ResetHeight
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7544,9 +7544,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1744648414}
-        m_TargetAssemblyTypeName: WallGenerator, Assembly-CSharp
-        m_MethodName: ResetHeight
+      - m_Target: {fileID: 997042620}
+        m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
+        m_MethodName: resetHeight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8094,7 +8094,7 @@ GameObject:
   - component: {fileID: 1251712032}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8169,7 +8169,7 @@ GameObject:
   - component: {fileID: 1281215339}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8971,6 +8971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386959746}
   - component: {fileID: 1386959747}
+  - component: {fileID: 1386959748}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -9010,6 +9011,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cc60010758374438fa96e67af16959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1386959748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386959745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23daed64fa73ceb4f9b2d1c0b3c05f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 2}
 --- !u!1 &1418279002
 GameObject:
   m_ObjectHideFlags: 0
@@ -9024,7 +9038,7 @@ GameObject:
   - component: {fileID: 1418279006}
   m_Layer: 5
   m_Name: Level Button (1)
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9420,9 +9434,10 @@ GameObject:
   - component: {fileID: 1425676182}
   - component: {fileID: 1425676181}
   - component: {fileID: 1425676180}
+  - component: {fileID: 1425676184}
   m_Layer: 0
   m_Name: Left Ray Interactor
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9829,6 +9844,20 @@ MonoBehaviour:
   m_MoveObjectIn: 14
   m_MoveObjectOut: 15
   m_PoseProvider: {fileID: 0}
+--- !u!114 &1425676184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425676178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022c1f44d6087bf469190f3ff1b20c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0.1
+  duration: 0.05
 --- !u!1 &1442529864
 GameObject:
   m_ObjectHideFlags: 0
@@ -10241,7 +10270,7 @@ GameObject:
   - component: {fileID: 1523064314}
   m_Layer: 5
   m_Name: Reset Height Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10691,7 +10720,7 @@ GameObject:
   - component: {fileID: 1621702631}
   m_Layer: 5
   m_Name: Medium Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10824,7 +10853,7 @@ GameObject:
   - component: {fileID: 1648632015}
   m_Layer: 5
   m_Name: Quit
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12322,7 +12351,7 @@ GameObject:
   - component: {fileID: 1795253664}
   m_Layer: 5
   m_Name: Restart Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12455,7 +12484,7 @@ GameObject:
   - component: {fileID: 1810176295}
   m_Layer: 5
   m_Name: Hard Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12803,7 +12832,7 @@ GameObject:
   - component: {fileID: 1828741674}
   m_Layer: 5
   m_Name: Quit Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13276,7 +13305,7 @@ GameObject:
   - component: {fileID: 1890533115}
   m_Layer: 5
   m_Name: Reset Data Button
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13618,7 +13647,7 @@ GameObject:
   - component: {fileID: 1944797528}
   m_Layer: 0
   m_Name: Right Hand
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13683,7 +13712,7 @@ GameObject:
   - component: {fileID: 1952469872}
   m_Layer: 5
   m_Name: Environement Button (0)
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13816,15 +13845,16 @@ GameObject:
   - component: {fileID: 1985026469}
   - component: {fileID: 1985026468}
   - component: {fileID: 1985026467}
+  - component: {fileID: 1985026471}
   m_Layer: 0
   m_Name: Right Ray Interactor
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1985026466
-Transform:
+--- !u!224 &1985026466
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13837,6 +13867,11 @@ Transform:
   m_Father: {fileID: 729340233}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985026467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14249,6 +14284,20 @@ MonoBehaviour:
   m_MoveObjectIn: 14
   m_MoveObjectOut: 15
   m_PoseProvider: {fileID: 0}
+--- !u!114 &1985026471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985026465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022c1f44d6087bf469190f3ff1b20c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0.1
+  duration: 0.05
 --- !u!1 &1998861870
 GameObject:
   m_ObjectHideFlags: 0
@@ -14608,7 +14657,7 @@ GameObject:
   - component: {fileID: 2060504625}
   m_Layer: 5
   m_Name: Level Button (0)
-  m_TagString: Untagged
+  m_TagString: UI Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14741,7 +14790,7 @@ GameObject:
   - component: {fileID: 2065434962}
   m_Layer: 0
   m_Name: Left Hand
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

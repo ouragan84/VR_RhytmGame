@@ -173,11 +173,13 @@ public class LevelSelector : MonoBehaviour
         if(selectedSongID >= 0){
             gameData.songsLastDifficultyPlayed[selectedSongID] = currentDifficulty;
             SaveSystem.instance.SaveGame(gameData);
-            source.Stop();
-            generator.StartLevel(selectedSongID, currentDifficulty, "");
-            disableAllCanvas();
-            fader.Fade();
+            fader.FadeWithFunctionCall(Launch, 0);
         }
+    }
+
+    public void Launch(int noonecares){
+        generator.StartLevel(selectedSongID, currentDifficulty, getStringDifficulty());
+        disableAllCanvas();
     }
 
     public string getStringDifficulty(){
@@ -190,6 +192,7 @@ public class LevelSelector : MonoBehaviour
     }
 
     public void disableAllCanvas(){
+        source.Stop();
         selectedSongID = -1;
         previewMusicID = -1;
         currentDifficulty = -1;

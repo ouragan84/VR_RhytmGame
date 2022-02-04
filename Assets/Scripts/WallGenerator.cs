@@ -220,7 +220,7 @@ public class WallGenerator : MonoBehaviour
 
         if(!wasPausedButtonPressedLastUpdate && (isResetPressedLeft && isResetPressedRight)){
             wasPausedButtonPressedLastUpdate = true;
-            ResetHeight();
+            levelSelector.resetHeight();
         }
 
         wasPausedButtonPressedLastUpdate =  (isMenuPressedLeft || isMenuPressedRight) || (isResetPressedLeft && isResetPressedRight);
