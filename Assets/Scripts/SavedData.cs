@@ -10,10 +10,16 @@ public class SavedData
     public string[][] songsBestGrade; // [song index][song difficulty]
     public int[][] songsBestScore;
     public int[] uniqueSongIdentifier;
+    public float musicVolume;
+    public float fxVolume;
+    public float playerHeight;
     //add everything related to high scores there
 
     public void ResetData(Levels levels){
         EnvironementID = 0;
+        musicVolume = .7f;
+        fxVolume = .7f;
+        playerHeight = 1.75f;
         
         songsLastDifficultyPlayed = new short[levels.levels.Length];
         songsBestGrade = new string[levels.levels.Length][];

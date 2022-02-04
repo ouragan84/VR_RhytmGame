@@ -16,6 +16,10 @@ public class LevelSelector : MonoBehaviour
     public GameObject songInfoCanvas;
     public GameObject optionsCanvas;
     public Button[] Difficultybuttons;
+    public Slider[] volumeSliders;
+    public Slider[] volumeFxSliders;
+    public AudioSource[] musicSources;
+    public AudioSource[] FXSources;
 
     private Levels levels;
     private Environements environements;
@@ -40,6 +44,9 @@ public class LevelSelector : MonoBehaviour
         updateScene();
         AssignButtons();
         getPreviewClips();
+        generator.setHeight(gameData.playerHeight);
+        changeVolume(gameData.musicVolume);
+        changeFXVolume(gameData.fxVolume);
     }
 
     public void LoadSavedData(){
@@ -219,5 +226,29 @@ public class LevelSelector : MonoBehaviour
 
     public void ExitGame(){
         Application.Quit();
+    }
+
+    public void resetHeight(){
+        gameData.playerHeight = generator.ResetHeight();
+        SaveSystem.instance.SaveGame(gameData);
+    }
+
+    // id: 0 = music, 1 = FX
+    public void changeVolume(float value){
+        foreach(Slider s in volumeSliders)
+            s.value = value;
+        foreach(AudioSource a in musicSources)
+            a.volume = value;
+        gameData.musicVolume = value;
+        SaveSystem.instance.SaveGame(gameData);
+    }
+
+    public void changeFXVolume(float value){
+        foreach(Slider s in volumeFxSliders)
+            s.value = value;
+        foreach(AudioSource a in FXSources)
+            a.volume = value;
+        gameData.fxVolume = value;
+        SaveSystem.instance.SaveGame(gameData);
     }
 }

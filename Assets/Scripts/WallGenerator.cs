@@ -60,6 +60,10 @@ public class WallGenerator : MonoBehaviour
     private LevelSelector levelSelector;
     private short currentDifficulty;
     
+    void Awake(){
+        initialScale = transform.localScale;
+        initialPosition = transform.position;
+    }   
 
     // Start is called before the first frame update
     void Start(){
@@ -73,9 +77,6 @@ public class WallGenerator : MonoBehaviour
 
         source = GetComponent<AudioSource>();
         levelSelector = GameObject.FindObjectOfType<LevelSelector>();
-
-        initialScale = transform.localScale;
-        initialPosition = transform.position;
     }
 
     public void StartLevel(int lvl, short difficultyID, string difficulty){
@@ -269,8 +270,18 @@ public class WallGenerator : MonoBehaviour
         scoreOut.ShowHit();
     }
 
-    public void ResetHeight(){
+    public float ResetHeight(){
         float playerHeight = FindObjectOfType<XROrigin>().CameraInOriginSpaceHeight + additionalHeight;
+        if(playerHeight > 2.5f) playerHeight = 2.5f; //arbitrary values here
+        if(playerHeight < 1.2f) playerHeight = 1.2f; //arbitrary values here
+        
+        transform.localScale = initialScale * (playerHeight / initialHeightOfPanels);
+        transform.position = new Vector3(initialPosition.x, initialPosition.y*(transform.localScale.y/initialScale.y), initialPosition.z);
+
+        return playerHeight;
+    }
+
+    public void setHeight(float playerHeight){
         if(playerHeight > 2.5f) playerHeight = 2.5f; //arbitrary values here
         if(playerHeight < 1.2f) playerHeight = 1.2f; //arbitrary values here
         
