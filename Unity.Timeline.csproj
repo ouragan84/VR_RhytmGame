@@ -350,6 +350,9 @@
     <Reference Include="ICSharpCode.NRefactory">
         <HintPath>C:\Users\Arnaud\My project (1)\Library\PackageCache\com.unity.render-pipelines.core@10.8.1\Editor\ShaderGenerator\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
+    <Reference Include="LibTessDotNet">
+        <HintPath>C:\Users\Arnaud\My project (1)\Library\PackageCache\com.sr4dev.unity-spriteassist@6d715a9a89\Editor\External\LibTessDotNet-v1.1.13\LibTessDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.26f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
     </Reference>

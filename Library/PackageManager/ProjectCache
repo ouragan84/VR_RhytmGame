@@ -5,21 +5,67 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637786544138279503
-    m_Hash: 1039334375
+      ticks: 637798563354993162
+    m_Hash: 4167076999
   m_LockFileStatus:
     m_FilePath: C:/Users/Arnaud/My project (1)/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637786544138379226
-    m_Hash: 3379646197
+      ticks: 637798563355092893
+    m_Hash: 826398667
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
+    - packageId: com.sr4dev.unity-spriteassist@https://github.com/sr4dev/Unity-SpriteAssist.git?path=Assets/SpriteAssist
+      testable: 0
+      isDirectDependency: 1
+      version: 0.11.0
+      source: 5
+      resolvedPath: C:\Users\Arnaud\My project (1)\Library\PackageCache\com.sr4dev.unity-spriteassist@6d715a9a89
+      assetPath: Packages/com.sr4dev.unity-spriteassist
+      name: com.sr4dev.unity-spriteassist
+      displayName: Unity-SpriteAssist
+      author:
+        name: sr4dev
+        email: 
+        url: https://github.com/sr4dev/Unity-SpriteAssist
+      category: 
+      type: 
+      description: Unity-SpriteAssist is an Unity extension that assist Sprite's
+        mesh creation more conviniently.
+      status: 4
+      errors: []
+      versions:
+        all: []
+        compatible: []
+        verified: 
+      dependencies: []
+      resolvedDependencies: []
+      keywords: []
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 0
+      repository:
+        type: 
+        url: 
+        revision: 
+        path: 
     - packageId: com.unity.2d.sprite@1.0.0
       testable: 0
       isDirectDependency: 1
@@ -125,10 +171,12 @@ m_PackageAssets:
         - 1.14.4
         - 1.14.7
         - 1.14.9
+        - 1.14.12
         - 1.15.1
         - 1.15.4
         - 1.15.7
         - 1.15.9
+        - 1.15.12
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -142,6 +190,7 @@ m_PackageAssets:
         compatible:
         - 1.15.7
         - 1.15.9
+        - 1.15.12
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -152,7 +201,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.15.9
+        verified: 1.15.12
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
@@ -248,6 +297,7 @@ m_PackageAssets:
         - 3.0.7
         - 3.0.9
         - 3.0.10
+        - 3.0.12
         compatible:
         - 1.0.2
         - 1.0.6
@@ -276,6 +326,7 @@ m_PackageAssets:
         - 3.0.7
         - 3.0.9
         - 3.0.10
+        - 3.0.12
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -941,7 +992,9 @@ m_PackageAssets:
         - 1.6.1
         - 1.6.2
         - 1.6.3
+        - 1.6.4
         - 1.7.0-pre.1
+        - 1.7.0-pre.2
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -965,7 +1018,9 @@ m_PackageAssets:
         - 1.6.1
         - 1.6.2
         - 1.6.3
+        - 1.6.4
         - 1.7.0-pre.1
+        - 1.7.0-pre.2
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -1116,6 +1171,7 @@ m_PackageAssets:
         - 1.0.0-pre.8
         - 2.0.0-pre.5
         - 2.0.0-pre.6
+        - 2.0.0-pre.7
         compatible:
         - 0.0.6-preview
         - 0.9.0-preview
@@ -1133,6 +1189,7 @@ m_PackageAssets:
         - 1.0.0-pre.8
         - 2.0.0-pre.5
         - 2.0.0-pre.6
+        - 2.0.0-pre.7
         verified: 
       dependencies:
       - name: com.unity.inputsystem
@@ -1408,13 +1465,16 @@ m_PackageAssets:
         - 1.11.2
         - 2.0.0-preview.1
         - 2.0.0-preview.2
+        - 2.0.0-preview.4
         - 3.0.0-pre.1
         - 3.0.0-pre.2
+        - 3.0.0-pre.4
         compatible:
         - 1.11.0
         - 1.11.2
         - 2.0.0-preview.1
         - 2.0.0-preview.2
+        - 2.0.0-preview.4
         - 3.0.0-pre.2
         verified: 1.11.2
       dependencies:
@@ -1625,6 +1685,7 @@ m_PackageAssets:
         - 2.8.0
         - 2.9.0
         - 2.9.1
+        - 2.9.2
         - 3.0.0
         - 3.0.1-preview.3
         - 3.0.1-preview.4
@@ -1646,6 +1707,7 @@ m_PackageAssets:
         - 4.5.0
         - 4.6.0
         - 4.6.1
+        - 4.6.2
         - 5.0.0
         - 5.1.0-exp.1
         - 5.1.0
@@ -1656,7 +1718,8 @@ m_PackageAssets:
         - 5.4.1
         compatible:
         - 4.6.1
-        verified: 4.6.1
+        - 4.6.2
+        verified: 4.6.2
       dependencies:
       - name: com.unity.modules.subsystems
         version: 1.0.0

@@ -378,6 +378,9 @@
     <Reference Include="ICSharpCode.NRefactory">
         <HintPath>C:\Users\Arnaud\My project (1)\Library\PackageCache\com.unity.render-pipelines.core@10.8.1\Editor\ShaderGenerator\ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
+    <Reference Include="LibTessDotNet">
+        <HintPath>C:\Users\Arnaud\My project (1)\Library\PackageCache\com.sr4dev.unity-spriteassist@6d715a9a89\Editor\External\LibTessDotNet-v1.1.13\LibTessDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
         <HintPath>C:\Users\Arnaud\My project (1)\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>

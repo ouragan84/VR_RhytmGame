@@ -11,6 +11,10 @@ public class WallDance : ObstacleInterface
         base.Start();
         transform.localScale = generator.transform.localScale;
         transform.position = generator.transform.position;
+
+        HeadTarget = transform.Find("Head");
+        LeftTarget = transform.Find("Left");
+        RightTarget = transform.Find("Right");
     }
 
     void Update()

@@ -11945,13 +11945,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: -3}
   Walls:
-  - {fileID: 8956979344211067856, guid: 7da1fec554b7fb840babe60be0b60abe, type: 3}
-  - {fileID: 1404566807585978498, guid: 2ff1d9678c485334386fd7f835f459df, type: 3}
-  - {fileID: 1404566807585978498, guid: 871b2fd13be15e04988a814111d1d5ce, type: 3}
-  - {fileID: 1404566807585978498, guid: 0fefdeb835b7d9b4487f6fa21a377851, type: 3}
+  - {fileID: 1221056218584011795, guid: e180e9f2007f62643bbf517f9541b308, type: 3}
+  - {fileID: 8780498756111206637, guid: b0b7218f9d380a347a46fe01c1d10d11, type: 3}
+  - {fileID: 3977176431310173045, guid: c5a2bb0c536c8594b9caf82fa946dc68, type: 3}
+  - {fileID: 3539335603774941160, guid: 7f22a360eb656774cb891c25f7fef102, type: 3}
   - {fileID: 6229086000352088115, guid: 457f215774f4e284682dbe1fb08d3ff7, type: 3}
   - {fileID: 6070343582201013140, guid: 86e3b42dd22a8c44f9e796c9f676fb03, type: 3}
   - {fileID: 1263089834256222341, guid: e343eaf17529d4e42936ae4c1eb56473, type: 3}
+  - {fileID: 5977094984763163900, guid: 23d9044c28162fa45a1896eebcb65527, type: 3}
+  - {fileID: 4650421340866843515, guid: 271453701a49a6c4fad64e36d1e9ecb5, type: 3}
   VRHead: {fileID: 2074478224}
   VRLeft: {fileID: 2065434959}
   VRRight: {fileID: 1944797525}
