@@ -7,7 +7,7 @@ TextureImporter:
       type: UnityEngine:GameObject
       assembly: UnityEngine.CoreModule
       name: MeshPrefab
-    second: {fileID: 1042280201064221932, guid: ea08651e1f0e69b40b889adafbbdfe16, type: 3}
+    second: {fileID: 8096827809725526398, guid: 77cace4c1e9f9b8499879159cb631164, type: 3}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
@@ -156,6 +156,6 @@ TextureImporter:
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
-  userData: '{"mode":2,"transparentDetail":0.30000001192092898,"transparentAlphaTolerance":10,"opaqueDetail":0.8899999856948853,"opaqueAlphaTolerance":139,"opaqueExtrude":0.0,"gridSize":0,"gridTolerance":0.0,"detectHoles":true,"edgeSmoothing":0.0,"useNonZero":true,"transparentShaderName":"Unlit/Transparent","opaqueShaderName":"Unlit/Texture","thickness":0.10000000149011612,"overrideTag":false,"overrideLayer":false,"overrideSortingLayer":false,"tag":"Untagged","layer":0,"sortingLayerId":0,"sortingOrder":0}'
+  userData: '{"mode":2,"transparentDetail":0.30000001192092898,"transparentAlphaTolerance":10,"opaqueDetail":0.7400000095367432,"opaqueAlphaTolerance":160,"opaqueExtrude":0.0,"gridSize":0,"gridTolerance":0.0,"detectHoles":true,"edgeSmoothing":0.0,"useNonZero":true,"transparentShaderName":"Unlit/Transparent","opaqueShaderName":"Unlit/Texture","thickness":0.10000000149011612,"overrideTag":false,"overrideLayer":false,"overrideSortingLayer":false,"tag":"Untagged","layer":0,"sortingLayerId":0,"sortingOrder":0}'
   assetBundleName: 
   assetBundleVariant: 

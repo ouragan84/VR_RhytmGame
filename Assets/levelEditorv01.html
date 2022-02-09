@@ -16,6 +16,9 @@
     <button id="edit" onclick="edit();">
         Edit
     </button>
+    <button id="edit" onclick="genRandom();">
+        Random
+    </button>
     <br>
     <div id="inputs">
 
@@ -75,12 +78,27 @@
                     newDiv.appendChild(input); // put it into the DOM
                     buttons[i].push(input);
                 }
-
-                var newDiv = document.createElement("br");
-                bigDiv.appendChild(newDiv);
             }
             
         }
+
+        function genRandom(){
+            let zerochance = 5;
+            for(let j = 0; j < num; j++){
+                for(let i = 0; i < titles.length; i++){
+                    buttons[i][j].checked = false;
+                }
+                let iindex = getRandomInt(titles.length+zerochance)-zerochance;
+                if(iindex >= 0){
+                    buttons[iindex][j].checked = true;
+                }
+            }
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
 
         function edit(){
             let str = document.getElementById("editInput").value;
@@ -117,9 +135,6 @@
                     newDiv.appendChild(input); // put it into the DOM
                     buttons[i].push(input);
                 }
-
-                var newDiv = document.createElement("br");
-                bigDiv.appendChild(newDiv);
             }
         }
 

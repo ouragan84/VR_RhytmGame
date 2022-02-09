@@ -53,6 +53,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.Universal.PostProcessData
     - UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
     - UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset
+    - UnityEngine.Rendering.Universal.UniversalRenderPipelineEditorResources
     - UnityEngine.Rendering.Universal.XRSystemData
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -185,157 +186,157 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1742}
-    - Class: 114
-      Script: {instanceID: 1744}
-    - Class: 114
       Script: {instanceID: 1746}
     - Class: 114
       Script: {instanceID: 1748}
     - Class: 114
       Script: {instanceID: 1750}
     - Class: 114
-      Script: {instanceID: 1756}
+      Script: {instanceID: 1752}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1754}
     - Class: 114
-      Script: {instanceID: 1914}
+      Script: {instanceID: 1760}
     - Class: 114
-      Script: {instanceID: 1924}
+      Script: {instanceID: 1842}
     - Class: 114
-      Script: {instanceID: 2088}
+      Script: {instanceID: 1918}
     - Class: 114
-      Script: {instanceID: 2446}
+      Script: {instanceID: 1928}
     - Class: 114
-      Script: {instanceID: 2556}
+      Script: {instanceID: 2096}
     - Class: 114
-      Script: {instanceID: 2640}
+      Script: {instanceID: 2462}
     - Class: 114
-      Script: {instanceID: 2704}
+      Script: {instanceID: 2572}
     - Class: 114
-      Script: {instanceID: 2754}
+      Script: {instanceID: 2656}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2720}
     - Class: 114
-      Script: {instanceID: 2868}
+      Script: {instanceID: 2770}
     - Class: 114
-      Script: {instanceID: 3020}
+      Script: {instanceID: 2824}
+    - Class: 114
+      Script: {instanceID: 2884}
     - Class: 114
       Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 3574}
+      Script: {instanceID: 3052}
     - Class: 114
-      Script: {instanceID: 3670}
+      Script: {instanceID: 3596}
     - Class: 114
-      Script: {instanceID: 3742}
+      Script: {instanceID: 3692}
     - Class: 114
       Script: {instanceID: 3766}
     - Class: 114
-      Script: {instanceID: 3838}
+      Script: {instanceID: 3790}
     - Class: 114
-      Script: {instanceID: 3984}
+      Script: {instanceID: 3862}
     - Class: 114
-      Script: {instanceID: 4028}
+      Script: {instanceID: 4010}
     - Class: 114
-      Script: {instanceID: 4134}
+      Script: {instanceID: 4054}
     - Class: 114
-      Script: {instanceID: 4192}
+      Script: {instanceID: 4162}
     - Class: 114
-      Script: {instanceID: 4258}
+      Script: {instanceID: 4222}
     - Class: 114
-      Script: {instanceID: 4270}
+      Script: {instanceID: 4288}
     - Class: 114
-      Script: {instanceID: 4368}
+      Script: {instanceID: 4300}
     - Class: 114
-      Script: {instanceID: 4490}
+      Script: {instanceID: 4398}
     - Class: 114
-      Script: {instanceID: 4506}
+      Script: {instanceID: 4478}
     - Class: 114
-      Script: {instanceID: 4646}
+      Script: {instanceID: 4526}
     - Class: 114
-      Script: {instanceID: 4678}
+      Script: {instanceID: 4542}
     - Class: 114
-      Script: {instanceID: 4788}
+      Script: {instanceID: 4686}
     - Class: 114
-      Script: {instanceID: 4808}
+      Script: {instanceID: 4720}
     - Class: 114
-      Script: {instanceID: 4986}
+      Script: {instanceID: 4834}
     - Class: 114
-      Script: {instanceID: 5098}
+      Script: {instanceID: 4854}
     - Class: 114
-      Script: {instanceID: 5568}
+      Script: {instanceID: 5032}
     - Class: 114
-      Script: {instanceID: 5892}
+      Script: {instanceID: 5144}
     - Class: 114
-      Script: {instanceID: 5906}
+      Script: {instanceID: 5390}
     - Class: 114
-      Script: {instanceID: 5926}
+      Script: {instanceID: 5620}
     - Class: 114
-      Script: {instanceID: 5992}
+      Script: {instanceID: 5944}
     - Class: 114
-      Script: {instanceID: 6008}
+      Script: {instanceID: 5958}
     - Class: 114
-      Script: {instanceID: 6240}
+      Script: {instanceID: 5978}
     - Class: 114
-      Script: {instanceID: 6242}
+      Script: {instanceID: 6046}
     - Class: 114
-      Script: {instanceID: 6264}
+      Script: {instanceID: 6062}
     - Class: 114
-      Script: {instanceID: 6438}
+      Script: {instanceID: 6294}
     - Class: 114
-      Script: {instanceID: 6556}
+      Script: {instanceID: 6296}
     - Class: 114
-      Script: {instanceID: 6684}
+      Script: {instanceID: 6318}
     - Class: 114
-      Script: {instanceID: 6764}
+      Script: {instanceID: 6494}
     - Class: 114
-      Script: {instanceID: 6836}
+      Script: {instanceID: 6612}
     - Class: 114
-      Script: {instanceID: 6850}
+      Script: {instanceID: 6740}
     - Class: 114
-      Script: {instanceID: 6928}
+      Script: {instanceID: 6820}
     - Class: 114
-      Script: {instanceID: 6934}
+      Script: {instanceID: 6894}
     - Class: 114
-      Script: {instanceID: 7068}
+      Script: {instanceID: 6908}
     - Class: 114
-      Script: {instanceID: 7110}
+      Script: {instanceID: 6986}
     - Class: 114
-      Script: {instanceID: 7158}
+      Script: {instanceID: 6992}
     - Class: 114
-      Script: {instanceID: 7160}
+      Script: {instanceID: 7126}
     - Class: 114
-      Script: {instanceID: 7254}
+      Script: {instanceID: 7170}
     - Class: 114
-      Script: {instanceID: 7384}
+      Script: {instanceID: 7218}
     - Class: 114
-      Script: {instanceID: 7546}
+      Script: {instanceID: 7220}
     - Class: 114
-      Script: {instanceID: 7694}
+      Script: {instanceID: 7314}
     - Class: 114
-      Script: {instanceID: 7750}
+      Script: {instanceID: 7444}
     - Class: 114
-      Script: {instanceID: 7752}
+      Script: {instanceID: 7608}
     - Class: 114
-      Script: {instanceID: 8106}
+      Script: {instanceID: 7758}
     - Class: 114
-      Script: {instanceID: 8122}
+      Script: {instanceID: 7814}
     - Class: 114
-      Script: {instanceID: 8288}
+      Script: {instanceID: 7816}
     - Class: 114
-      Script: {instanceID: 8500}
+      Script: {instanceID: 8170}
     - Class: 114
-      Script: {instanceID: 8542}
+      Script: {instanceID: 8188}
     - Class: 114
-      Script: {instanceID: 8842}
+      Script: {instanceID: 8354}
     - Class: 114
-      Script: {instanceID: 9054}
+      Script: {instanceID: 8572}
+    - Class: 114
+      Script: {instanceID: 8614}
+    - Class: 114
+      Script: {instanceID: 8914}
     - Class: 114
       Script: {instanceID: 9128}
     - Class: 114
-      Script: {instanceID: 25164}
-    - Class: 114
-      Script: {instanceID: 43958}
+      Script: {instanceID: 9202}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -759,6 +760,12 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerWidget
   - hash:
       serializedVersion: 2
+      Hash: 1c9ba479ec29e4259135f14317b246d3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: test3DSprite
+  - hash:
+      serializedVersion: 2
       Hash: 0c5108545fb925730d4d5887ebcdd20c
     assemblyName: Unity.XR.ARSubsystems.dll
     namespaceName: UnityEngine.XR.ARSubsystems
@@ -1029,6 +1036,12 @@ ScriptsOnlyBuild:
     className: TeleportationProvider
   - hash:
       serializedVersion: 2
+      Hash: 59c38d2d5f6b4492cf7cd220c8fe0cd5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: addCollidersToInteractables
+  - hash:
+      serializedVersion: 2
       Hash: 8b1fe5dfdcf943fb3b72506b9f19335f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1279,6 +1292,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.OpenXR.dll
     namespaceName: UnityEngine.XR.OpenXR.Features.Interactions
     className: MicrosoftMotionControllerProfile
+  - hash:
+      serializedVersion: 2
+      Hash: c8c4c634382c084c2fd374cac2704f44
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: getRayCastHitForVibration
   - hash:
       serializedVersion: 2
       Hash: b6514f552bd2ee9e736a5678aa7f7de3
@@ -2107,21 +2126,9 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: Benchmark01
-  - hash:
-      serializedVersion: 2
-      Hash: c8c4c634382c084c2fd374cac2704f44
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: getRayCastHitForVibration
-  - hash:
-      serializedVersion: 2
-      Hash: 59c38d2d5f6b4492cf7cd220c8fe0cd5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: addCollidersToInteractables
   platform: 13
   scenePathNames:
   - Assets/Scenes/VR Start Scene.unity
   - Assets/Scenes/VR Test Environement 1.unity
   - Assets/Scenes/VR Test Environement 2.unity
-  playerPath: C:/Users/Arnaud/My project (1)/builds/build14.apk
+  playerPath: C:/Users/Arnaud/My project (1)/builds/build15.apk
