@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="lengthInput" value="0">
+    <button id="generate" onclick="generate();">
+        Generate
+    </button>
+
+    <input type="text" id="editInput" value="">
+    <button id="edit" onclick="edit();">
+        Edit
+    </button>
+    <br>
+    <div id="inputs">
+
+    </div>
+    <br>
+    <br>
+    <button id="finalize" onclick="finalize();">
+        Finalize
+    </button>
+    <p id="output"></p>
+    <script>
+        let num = 0;
+        let buttons = [];
+        let bigDiv = document.getElementById("inputs");
+        let output = document.getElementById("output");
+        let titles = [
+            "Both arms up",
+            "Left arm up",
+            "Right arm up",
+            "squat up",
+            "stretch left",
+            "stretch right",
+            "T pose",
+            "win left",
+            "win right",
+            "wall left",
+            "wall right",
+            "wall top"
+        ];
+
+        function generate(){
+            num = parseInt(document.getElementById("lengthInput").value);
+            console.log(num);
+
+            while (bigDiv.firstChild) {
+                bigDiv.removeChild(bigDiv.firstChild);
+            }
+
+            var divs = [];
+            for(let i = 0; i < titles.length; i++){
+                var newDiv = document.createElement("div");
+                newDiv.id = "line" + i;
+                bigDiv.appendChild(newDiv); // put it into the DOM
+                divs.push(newDiv);
+
+                var title = document.createElement("li");
+                title.innerHTML = titles[i];
+                newDiv.appendChild(title);
+
+                buttons[i] = [];
+
+                for(let j = 0; j < num; j++){
+                    var input = document.createElement("input");
+                    input.type = "checkbox";
+                    input.onclick = function(){check(i, j)};
+                    //input.className = "css-class-name";
+                    newDiv.appendChild(input); // put it into the DOM
+                    buttons[i].push(input);
+                }
+
+                var newDiv = document.createElement("br");
+                bigDiv.appendChild(newDiv);
+            }
+            
+        }
+
+        function edit(){
+            let str = document.getElementById("editInput").value;
+            let choices = str.split(',');
+            choices[0] = choices[0].substring(1);
+            num = choices.length;
+            document.getElementById("lengthInput").value = num;
+
+
+            while (bigDiv.firstChild) {
+                bigDiv.removeChild(bigDiv.firstChild);
+            }
+
+            var divs = [];
+            for(let i = 0; i < titles.length; i++){
+                var newDiv = document.createElement("div");
+                newDiv.id = "line" + i;
+                bigDiv.appendChild(newDiv); // put it into the DOM
+                divs.push(newDiv);
+
+                var title = document.createElement("li");
+                title.innerHTML = titles[i];
+                newDiv.appendChild(title);
+
+                buttons[i] = [];
+
+                for(let j = 0; j < num; j++){
+                    var input = document.createElement("input");
+                    input.type = "checkbox";
+                    input.onclick = function(){check(i, j)};
+                    if(parseInt(choices[j]) - 1== i)
+                        input.checked = true;
+                    //input.className = "css-class-name";
+                    newDiv.appendChild(input); // put it into the DOM
+                    buttons[i].push(input);
+                }
+
+                var newDiv = document.createElement("br");
+                bigDiv.appendChild(newDiv);
+            }
+        }
+
+        function check(posi, posj){
+            if(buttons[posi][posj].checked){
+                for(let i = 0; i < titles.length; i++){
+                    if(i != posi)
+                        buttons[i][posj].checked = false;
+                }
+            }
+                
+        }
+
+        function finalize(){
+            let str = "[";
+            for(let j = 0; j < num; j++){
+                let poop = 0;
+                for(let i = 0; i < titles.length; i++){
+                    if(buttons[i][j].checked){
+                        poop = i+1;
+                    }
+                }
+                str += poop;
+                if(j + 1 < num)
+                    str += ",";
+                else
+                    str += "]";
+            }
+            output.innerHTML = str;
+        }
+    </script>
+</body>
+</html>

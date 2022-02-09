@@ -157,7 +157,17 @@ public class LevelSelector : MonoBehaviour
     }
 
     public static string formatScore(int score){
-        return "" + score;
+        string output = "";
+        string scoreRaw = "" + score;
+
+        for(int i = 0; i < scoreRaw.Length; i++){
+            output += scoreRaw[i];
+            if((i-scoreRaw.Length+1)%3 == 0 && i+1 < scoreRaw.Length){
+                output += ',';
+            }
+        }
+
+        return output;
     }
 
     public void changeDifficulty(short difficulty){
